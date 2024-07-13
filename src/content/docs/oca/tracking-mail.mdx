@@ -1,0 +1,44 @@
+---
+title: Mail de Rastreo
+---
+
+import { Image } from 'astro:assets';
+import trackingMail from '../../../assets/tracking-mail.png'
+import mailsRoute from '../../../assets/ruta-plantillas-mail.png'
+
+Al procesar una orden con OCA, se enviará un mail automáticamente al cliente con el número de tracking de su envío
+
+<Image src={trackingMail} style="margin: 20px auto;" alt="Mail de Rastreo" />
+
+El mail usa el asunto y el cuerpo configurado en los ajustes del plugin, junto con la plantilla de la tienda de WooCommerce. Sin embargo si lo deseas, podes modificar la plantilla a tu gusto reemplazándola por una nueva. Para ello tenes que crear un nuevo archivo en tu tema en la siguiente ruta: `wp-content/themes/_TEMA_ACTIVO_/oca-for-woocommerce/templates/tracking-email.php`
+
+<Image src={mailsRoute} style="margin: 20px auto;" alt="Ruta de plantillas de mail" />
+
+Y por si lo necesitás como base para tu nueva plantilla, el contenido de la nuestra es:
+
+```php
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
+
+<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+
+<p><?php echo wp_kses_post( $email_body ); ?></p>
+
+<?php
+do_action( 'woocommerce_email_order_details', $order, $sent_to_admin, $plain_text, $email );
+
+do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, $email );
+
+do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email );
+
+if ( $additional_content ) {
+	echo wp_kses_post( wpautop( wptexturize( $additional_content ) ) );
+}
+
+do_action( 'woocommerce_email_footer', $email );
+```

@@ -11,7 +11,7 @@
     "languageSelect.accessibleLabel": "Select language",
     "menuButton.accessibleLabel": "Menu",
     "sidebarNav.accessibleLabel": "Main",
-    "tableOfContents.onThisPage": "On this page",
+    "tableOfContents.onThisPage": "En esta página",
     "tableOfContents.overview": "Inicio",
     "i18n.untranslatedContent": "This content is not available in your language yet.",
     "page.editLink": "Edit page",
@@ -19,11 +19,11 @@
     "page.previousLink": "Anterior",
     "page.nextLink": "Siguiente",
     "page.draft": "This content is a draft and will not be included in production builds.",
-    "404.text": "Page not found. Check the URL or try using the search bar.",
-    "aside.note": "Note",
+    "404.text": "Página no encontrada :(",
+    "aside.note": "Nota",
     "aside.tip": "Tip",
-    "aside.caution": "Caution",
+    "aside.caution": "Nota",
     "aside.danger": "Danger",
     "fileTree.directory": "Directory",
-    "builtWithStarlight.label": "Built with Starlight"
+    "builtWithStarlight.label": "Hecho con Starlight"
 }

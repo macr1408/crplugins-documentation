@@ -1,0 +1,28 @@
+---
+title: Desarrolladores
+---
+
+import { Image } from 'astro:assets';
+
+Esta sección contiene información util para los desarrolladores que deseen extender la funcionalidad de nuestro plugin.
+
+## Hooks
+
+OCA para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
+
+
+| Hook | Tipo | Argumentos | Descripción |
+|------|------|------------|-------------|
+|oca_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
+|wc_oca_items_before_process|filter|$items, $to, $order|Permite modificar los productos a utilizar antes de procesar una orden|
+|wc_oca_to_before_process|filter|$to, $items, $order|Permite modificar los datos del destinatario antes de procesar una orden|
+|wc_oca_res_after_process|filter|$response, $order|Permite modificar la respuesta obtenida de OCA luego de procesar una orden|
+|wc_oca_cart_before_shipping_calculation|filter|$items, $cart, $customer|Permite modificar los productos a utilizar antes de cotizar un carrito|
+|wc_oca_shipping_codes_before_quote|filter|$shipping_codes, $seller_postcode, $items, $customer|Permite modificar las operativas antes de cotizar un carrito|
+|wc_oca_door_shipping_rate|filter|$rate, $code, $items|Permite modificar la cotización con destino a puerta obtenida en el carrito antes de agregarla al checkout|
+|wc_oca_branch_shipping_rate|filter|$rate, $code, $items|Permite modificar la cotización con destino a sucursal obtenida en el carrito antes de agregarla al checkout|
+|wc_oca_before_order_process|action|$order|Ocurre antes de procesar una orden|
+|wc_oca_after_order_process|action|$order|Ocurre luego de procesar una orden|
+|wc_oca_after_order_cancel|action|$order|Ocurre antes de cancelar una orden|
+|wc_oca_after_order_cancel|action|$order|Ocurre luego de cancelar una orden|
+|wc_oca_cart_before_items_calculation|action|$cart, $customer|Ocurre antes de cotizar un carrito|

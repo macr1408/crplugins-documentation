@@ -17,6 +17,10 @@ importers:
       sharp:
         specifier: ^0.32.5
         version: 0.32.6
+    devDependencies:
+      astro-vtbot:
+        specifier: ^1.7.26
+        version: 1.7.26
 
 packages:
 
@@ -689,6 +693,9 @@ packages:
     resolution: {integrity: sha512-f1L1m3J3EzZHDEox6TXmuKo5fTSbaNxE/HU0S0UQmvlCowtOKnU/LOsoDwsbQSYGKz+fdLRPsCjFMiKqEoyfcw==}
     peerDependencies:
       astro: ^4.0.0-beta || ^3.3.0
+
+  astro-vtbot@1.7.26:
+    resolution: {integrity: sha512-mpO2dA1WEX2+FHyZpE9O1CCxvlDfElpl7W64DVZ4n/h4Gm66U2h6+uw6xAynPtGaA25ehIAn8u4JmfZZfWUpyA==}
 
   astro@4.11.5:
     resolution: {integrity: sha512-TCRhuaLwrxwMhS8S1GG+ZTdrAXigX9C8E/YUTs/r2t+owHxDgwl86IV9xH1IHrCPoqhK6civyAQNOT+GKmkb0A==}
@@ -2760,6 +2767,8 @@ snapshots:
     dependencies:
       astro: 4.11.5
       rehype-expressive-code: 0.35.3
+
+  astro-vtbot@1.7.26: {}
 
   astro@4.11.5:
     dependencies:

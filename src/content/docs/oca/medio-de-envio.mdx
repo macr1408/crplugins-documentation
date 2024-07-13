@@ -1,0 +1,39 @@
+---
+title: Medio de envío
+---
+
+import { Image } from 'astro:assets';
+import carritoShortcode from '../../../assets/carrito-shortcode.png'
+import checkoutShortcode from '../../../assets/checkout-shortcode.png'
+import carritoBlock from '../../../assets/carrito-block.png'
+import checkoutBlock from '../../../assets/checkout-block.png'
+
+## Carrito
+
+OCA estará disponible como medio de envío en el carrito de WooCommerce.
+
+Si hay una operativa con medio de envío a sucursal, se mostrará el selector de sucursales si está activado.
+
+:::note
+OCA solo modifica los precios cotizados en base al código postal y los productos del carritos
+:::
+
+<Image src={carritoShortcode} style="margin:20px auto" alt="OCA en el carrito shortcode" />
+<Image src={carritoBlock} style="margin:20px auto" alt="OCA en el carrito block" />
+
+## Checkout
+
+OCA estará disponible como medio de envío en el checkout de WooCommerce.
+
+Si hay una operativa con medio de envío a sucursal, se mostrará el selector de sucursales si está activado.
+
+:::note
+OCA solo modifica los precios cotizados en base al código postal y los productos del carritos
+:::
+
+<Image src={checkoutShortcode} style="margin:20px auto" alt="OCA en el checkout shortcode" />
+<Image src={checkoutBlock} style="margin:20px auto" alt="OCA en el checkout block" />
+
+## Compatibilidad con páginas con Blocks y Shortcodes
+
+Nuestro plugin está optimizado para funcionar tanto como con las páginas legacy (shortcode) de carrito y checkout, como con las páginas nuevas (WooCommerce 8.3+) con bloques de Gutenberg. Nos ocupamos de que puedas ofrecer envíos en todas las versiones de tu tienda.

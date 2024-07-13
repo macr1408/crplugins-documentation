@@ -1,0 +1,93 @@
+---
+title: Configuración
+---
+
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
+
+- El plugin esté instalado y activo
+- Los ajustes estén correctos
+- OCA esté habilitado como medio de envío para la zona de envío de WooCommerce
+- Los productos en el carrito tengan ancho, largo, alto y peso (requisito de OCA)
+- La dirección del cliente en el checkout sea válida
+
+## Instalación
+
+- Accedé al Panel de Administración
+- En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
+- En la barra de búsqueda en la parte superior derecha, escribí **OCA para WooCommerce**
+- Instalá nuestro plugin
+- Activá el plugin
+
+## Ajustes del plugin
+
+Haciendo click en el item "OCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+
+#### Operativas
+
+Para el campo **Nombre de Operativas**, tenés la posibilidad de agregar _etiquetas_ las cuales luego serán reemplazadas por su valor correspondiente en el carrito y checkout.
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{oca_tiempo_entrega}}" variant="note" /> | Mostrará el tiempo de entrega estimado por OCA | 1 |
+| <Badge text="{{oca_precio_envio}}" variant="note" /> | Mostrará el costo del envío cotizado por OCA | 1200 |
+
+Por ejemplo, si se usa el nombre de operativa `Envío a Domicilio ({{oca_tiempo_entrega}} días)`, en el checkout se verá reflejado `Envío a Domicilio (3 días)`
+
+#### Mail
+
+En caso de habilitar la opción **Enviar tracking al cliente por email**, se enviará un mail al cliente con el número de tracking automáticamente al generar una etiqueta de envío. Este mail puede tener _etiquetas_ en el asunto y en el cuerpo del mismo.
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | 1 | Juan |
+| <Badge text="{{nombre_completo}}" variant="note" /> | Mostrará el nombre y apellido del cliente | Juan Perez |
+| <Badge text="{{sitio}}" variant="note" /> | Mostrará el nombre de la tienda | CRPlugins |
+| <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
+
+Por ejemplo, si se usa el asunto de mail `Tu orden #{{orden}} ha sido enviada`, en el cliente de correo se verá el asunto `Tu orden #123 ha sido enviada`
+
+## Zonas de Envío
+
+WooCommerce gestiona los medios de envío disponibles según las **Zonas de Envío**, por lo que deberemos agregar OCA a nuestras zonas de envío para que pueda figurar en el checkout.
+
+Para hacerlo tendremos que:
+
+<Steps>
+
+1. Ir a los ajustes de WooCommerce
+
+2. Hacer click en la pestaña **Envío**
+
+3. Clickear en **editar** en una zona de envío o añadir una nueva zona en caso de ser necesario
+
+4. Clickear en **Añadir método de envío**
+
+5. Seleccionar **OCA** y hacer click en **Seguir**
+
+</Steps>
+
+Adicionalmente se pueden configurar algunas opciones adicionales como envío gratuito a partir de cierto monto de ser necesario. Tambien se puede modificar el orden en que aparecerán los medios de envío haciendo click y arrastrando cada uno.
+
+## Productos
+
+Por requisito de OCA, cada producto debe tener cargado dimensiones y peso, de lo contrario no se podrá cotizar el carrito.
+
+Para cargar dimensiones y peso hay que:
+
+<Steps>
+
+1. Ir a la página de edición de cualquier producto
+
+2. Hacer click en la pestaña **Envío**
+
+3. Cargar los 4 campos. 
+    - La clase de envío no es necesaria.
+
+</Steps>

@@ -1,0 +1,47 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import StarlightHead from '@astrojs/starlight/components/Head.astro';
+import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
+import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
+
+---
+
+<VtbotStarlight {...Astro.props} transition:animate="fade">
+  <StarlightHead {...Astro.props}><slot /></StarlightHead>
+</VtbotStarlight>
+
+<ProgressBar />
+<style is:global>
+  .swup-progress-bar {
+    background: linear-gradient(
+      to bottom,
+      var(--sl-color-accent),
+      var(--sl-color-accent-high),
+      var(--sl-color-accent)
+    );
+    height: 5px;
+  }</style>
+
+<style is:global>
+  /* Slow down Chrome's default animation */
+  ::view-transition-group(root) {
+    animation-duration: 300ms;
+  }
+
+  /* Do not slide over the sidebars */
+  ::view-transition-group(main) {
+    overflow: hidden;
+  }
+  /* For non-native-view-transition browsers */
+  .main-pane {
+    overflow: hidden;
+  }
+
+  /* let title headings morph into each other */
+  main h1 {
+    view-transition-name: title-heading;
+  }
+  ::view-transition-group(title-heading) {
+    animation-duration: 0.3s;
+  }
+</style>

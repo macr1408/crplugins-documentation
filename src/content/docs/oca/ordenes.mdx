@@ -1,0 +1,96 @@
+---
+title: Órdenes
+---
+
+import { Image } from 'astro:assets';
+import orderDetails from '../../../assets/detalles-orden.png'
+import orderCanceled from '../../../assets/orden-cancelada.png'
+import orderUnprocessed from '../../../assets/orden-sin-procesar.png'
+import orderProcessed from '../../../assets/orden-procesada.png'
+import orderNotOca from '../../../assets/orden-sin-oca.png'
+import orderPdfA4 from '../../../assets/orden-pdf-a4.png'
+import orderPdf10x15 from '../../../assets/orden-pdf-10x15.png'
+import orderZpl from '../../../assets/orden-zpl.png'
+
+## Detalles de una orden
+
+Desde los detalles de cualquier de orden podrás ver una caja a la derecha con todas las acciones disponibles de OCA.
+
+<Image src={orderDetails} style="margin:20px auto" alt="OCA en los detalles de una orden" />
+
+Desde acá podrás realizar distintas acciones según el estado de la orden
+
+## Procesar orden
+
+**Disponible cuando:** La orden no ha sido procesada. La orden ha sido cancelada.
+
+**Efecto:** Envía la orden a OCA confirmando que está lista para ser despachada y genera una(s) etiqueta(s) para armar el paquete. Si la opción está habilitada, tambien enviará un mail al cliente con el número de rastreo.
+
+<div style="display: flex;flex-wrap: wrap;justify-content: space-around;align-items: flex-end;">
+<Image src={orderUnprocessed} alt="Orden sin procesar" />
+<Image src={orderCanceled} alt="Orden cancelada" />
+</div>
+
+## Ver y descargar etiqueta PDF A4
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Visualiza o descarga la etiqueta en formato PDF, tamaño A4.
+
+<Image src={orderPdfA4} alt="Etiqueta PDF A4" />
+
+## Ver y descargar etiqueta PDF 10x15
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Visualiza o descarga la etiqueta en formato PDF, tamaño 10x15.
+
+<Image src={orderPdf10x15} alt="Etiqueta PDF 10x15" />
+
+## Descargar etiqueta ZPL
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Descarga la etiqueta en formato ZPL.
+
+<Image src={orderZpl} alt="Etiqueta ZPL" />
+
+## Rastrear orden
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Abre un popup que permite visualizar el estado actual del envío.
+
+## Reenviar mail de rastreo
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Reenvia el mail con el número de rastreo de la orden al cliente.
+
+## Cancelar orden
+
+**Disponible cuando:** La orden ha sido procesada.
+
+**Efecto:** Cancela el envío actual con OCA. No altera el estado del pedido ni notifica al cliente.
+
+<Image src={orderCanceled} style="margin:20px auto" alt="Orden cancelada" />
+
+## Modificar número de paquetes a enviar
+
+**Disponible cuando:** La orden no ha sido procesada. La orden ha sido cancelada.
+
+**Efecto:** Modifica el número de paquetes a despachar. Por ejemplo si la orden se enviará en 2 cajas en lugar de 1, esta opción permite configurar este número asi el plugin generará 2 etiquetas (una para cada caja) en lugar de 1.
+
+:::caution
+Recordá hacer click en **Guardar** para que el cambio tome efecto
+:::
+
+<Image src={orderCanceled} style="margin:20px auto" alt="Orden cancelada" />
+
+## Usar OCA como medio de envío
+
+**Disponible cuando:** La orden no fue creada con OCA como medio de envío. La orden fue creada manualmente.
+
+**Efecto:** Configura la orden para ser enviada con OCA. Este proceso es irreversible.
+
+<Image src={orderNotOca} style="margin:20px auto" alt="Orden sin oca" />
