@@ -2,8 +2,11 @@
 title: Configuración
 ---
 
+import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
+import shippingZone from '../../../assets/zona-de-envio.png'
+import productDimensions from '../../../assets/dimensiones-producto.png'
 
 Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
 
@@ -75,6 +78,8 @@ Para hacerlo tendremos que:
 
 Adicionalmente se pueden configurar algunas opciones adicionales como envío gratuito a partir de cierto monto de ser necesario. Tambien se puede modificar el orden en que aparecerán los medios de envío haciendo click y arrastrando cada uno.
 
+<Image src={shippingZone} style="margin:20px auto" alt="Zona de envío" />
+
 ## Productos
 
 Por requisito de OCA, cada producto debe tener cargado dimensiones y peso, de lo contrario no se podrá cotizar el carrito.
@@ -91,3 +96,4 @@ Para cargar dimensiones y peso hay que:
     - La clase de envío no es necesaria.
 
 </Steps>
+<Image src={productDimensions} style="margin:20px auto" alt="Dimensiones de producto" />

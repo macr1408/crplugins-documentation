@@ -7,7 +7,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'CRPlugins',
-      favicon: './src/assets/favicon.svg',
       credits: true,
       tableOfContents: true,
       logo: {
