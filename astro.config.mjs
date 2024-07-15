@@ -3,11 +3,17 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://documentacion.crplugins.com.ar/',
   integrations: [
     starlight({
       title: 'CRPlugins',
       credits: true,
       tableOfContents: true,
+      logo: {
+        dark: './src/assets/dark-logo.svg',
+        light: './src/assets/light-logo.svg',
+        replacesTitle: true,
+      },
       locales: {
         root: {
           label: 'Español',

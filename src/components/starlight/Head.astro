@@ -2,8 +2,7 @@
 import type { Props } from '@astrojs/starlight/props';
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import VtbotStarlight from 'astro-vtbot/components/starlight/Base.astro';
-import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
-
+import ProgressBar from 'astro-vtbot/components/ProgressBar.astro';
 ---
 
 <VtbotStarlight {...Astro.props} transition:animate="fade">
@@ -20,7 +19,8 @@ import ProgressBar from "astro-vtbot/components/ProgressBar.astro";
       var(--sl-color-accent)
     );
     height: 5px;
-  }</style>
+  }
+</style>
 
 <style is:global>
   /* Slow down Chrome's default animation */
