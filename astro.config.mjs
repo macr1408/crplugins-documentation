@@ -38,6 +38,7 @@ export default defineConfig({
             'oca/tracking-mail',
             'oca/desarrolladores',
             'oca/preguntas-frecuentes',
+            'oca/errores-frecuentes',
           ],
         },
         {
