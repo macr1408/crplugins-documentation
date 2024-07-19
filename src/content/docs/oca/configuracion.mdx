@@ -5,8 +5,8 @@ title: Configuración
 import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
-import shippingZone from '../../../assets/zona-de-envio.png'
-import productDimensions from '../../../assets/dimensiones-producto.png'
+import shippingZone from '../../../assets/oca/zona-de-envio.png'
+import productDimensions from '../../../assets/oca/dimensiones-producto.png'
 
 Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
 
@@ -43,13 +43,17 @@ Por ejemplo, si se usa el nombre de operativa `Envío a Domicilio ({{oca_tiempo_
 
 #### Mail
 
-En caso de habilitar la opción **Enviar tracking al cliente por email**, se enviará un mail al cliente con el número de tracking automáticamente al generar una etiqueta de envío. Este mail puede tener _etiquetas_ en el asunto y en el cuerpo del mismo.
+Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
+
+- Mail con número de rastreo
+
+Adicionalmente estos mails pueden tener _etiquetas_ en el asunto y en el cuerpo del mismo.
 
 Las _etiquetas_ disponibles actualmente son:
 
 |  Etiqueta  | Resultado | Ejemplo |
 |------------|-----------|---------|
-| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | 1 | Juan |
+| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | Juan |
 | <Badge text="{{nombre_completo}}" variant="note" /> | Mostrará el nombre y apellido del cliente | Juan Perez |
 | <Badge text="{{sitio}}" variant="note" /> | Mostrará el nombre de la tienda | CRPlugins |
 | <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
@@ -97,3 +101,9 @@ Para cargar dimensiones y peso hay que:
 
 </Steps>
 <Image src={productDimensions} style="margin:20px auto" alt="Dimensiones de producto" />
+
+## Video instructivo
+
+Adicionalmente tenemos un video instructivo con todos los pasos necesarios para configurar el plugin:
+
+<iframe width="560" style="height:315px;" height="315" src="https://www.youtube.com/embed/apPLtYrhRhQ?si=5qzQrCIhRXpkyRsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

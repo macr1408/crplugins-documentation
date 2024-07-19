@@ -42,11 +42,25 @@ export default defineConfig({
           ],
         },
         {
+          label: 'AFIP para WooCommerce',
+          items: [
+            'afip/introduccion',
+            'afip/configuracion',
+            'afip/ordenes',
+            'afip/listado-ordenes',
+            'afip/mails',
+            'afip/desarrolladores',
+            'afip/preguntas-frecuentes',
+            'afip/errores-frecuentes',
+          ],
+        },
+        {
           slug: 'contacto',
         },
       ],
       components: {
         Head: './src/components/starlight/Head.astro',
+        SiteTitle: './src/components/starlight/SiteTitle.astro',
       },
     }),
   ],

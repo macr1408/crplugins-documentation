@@ -3,8 +3,7 @@ title: Desarrolladores
 ---
 
 import { Image } from 'astro:assets';
-import cssBranchSelector from '../../../assets/css-selector-sucursales.png'
-
+import cssBranchSelector from '../../../assets/oca/css-selector-sucursales.png'
 
 Esta sección contiene información util para los desarrolladores que deseen extender la funcionalidad de nuestro plugin.
 
@@ -51,7 +50,7 @@ OCA para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu
 
 | Hook | Tipo | Argumentos | Descripción |
 |------|------|------------|-------------|
-|oca_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
+|wc_oca_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
 |wc_oca_items_before_process|filter|$items, $to, $order|Permite modificar los productos a utilizar antes de procesar una orden|
 |wc_oca_to_before_process|filter|$to, $items, $order|Permite modificar los datos del destinatario antes de procesar una orden|
 |wc_oca_response_after_process|filter|$response, $order|Permite modificar la respuesta obtenida de OCA luego de procesar una orden|

@@ -3,8 +3,8 @@ title: Mail de Rastreo
 ---
 
 import { Image } from 'astro:assets';
-import trackingMail from '../../../assets/tracking-mail.png'
-import mailsRoute from '../../../assets/ruta-plantillas-mail.png'
+import trackingMail from '../../../assets/oca/tracking-mail.png'
+import mailsRoute from '../../../assets/oca/ruta-plantillas-mail.png'
 
 Al procesar una orden con OCA, se enviará un mail automáticamente al cliente con el número de tracking de su envío
 
@@ -14,7 +14,9 @@ El mail usa el asunto y el cuerpo configurado en los ajustes del plugin, junto c
 
 <Image src={mailsRoute} style="margin: 20px auto;" alt="Ruta de plantillas de mail" />
 
-Y por si lo necesitás como base para tu nueva plantilla, el contenido de la nuestra es:
+## Plantilla base
+
+Por si lo necesitás como base para tu nueva plantilla, el contenido de la nuestra para todos los mails es:
 
 ```php
 <?php

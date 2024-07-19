@@ -1,0 +1,30 @@
+---
+title: Desarrolladores
+---
+
+import { Image } from 'astro:assets';
+
+Esta sección contiene información util para los desarrolladores que deseen extender la funcionalidad de nuestro plugin.
+
+## Personalización de textos
+
+Nuestro plugin está escrito en inglés y traducido al español. Por lo que con cualquier plugin de traducción como por ejemplo [Loco Translate](https://es.wordpress.org/plugins/loco-translate/) vas a poder modificar cualquier cadena de texto mostrada por el plugin.
+
+## Hooks
+
+AFIP para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
+
+
+| Hook | Tipo | Argumentos | Descripción |
+|------|------|------------|-------------|
+|wc_afip_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
+|wc_afip_items_before_process|filter|$items, $customer, $order|Permite modificar los productos a utilizar antes de crear una factura|
+|wc_afip_customer_before_process|filter|$customer, $items, $order|Permite modificar los datos del cliente antes de crear una factura|
+|wc_afip_response_after_order_process|filter|$response, $order|Permite modificar la respuesta obtenida de AFIP luego de crear una factura|
+|wc_afip_response_after_order_note_create|filter|$response, $order|Permite modificar la respuesta obtenida de AFIP luego de crear una nota de crédito|
+|wc_afip_legacy_checkout_modified|action|$fields|Ocurre luego de agregar un campo al checkout legacy de WooCommerce|
+|wc_afip_blocks_checkout_modified|action|$fields|Ocurre luego de agregar un campo al checkout block de WooCommerce|
+|wc_afip_before_order_process|action|$order|Ocurre antes de crear una factura|
+|wc_afip_after_order_process|action|$order|Ocurre luego de crear una factura|
+|wc_afip_before_credit_note_creation|action|$order|Ocurre antes de crear una factura|
+|wc_afip_after_credit_note_creation|action|$order|Ocurre luego de crear una factura|

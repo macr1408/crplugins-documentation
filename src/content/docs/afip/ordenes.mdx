@@ -1,0 +1,69 @@
+---
+title: Órdenes
+---
+
+import { Image } from 'astro:assets';
+import orderDetails from '../../../assets/afip/detalles-orden.png'
+import orderWithoutInvoice from '../../../assets/afip/orden-sin-factura.png'
+import orderWithInvoice from '../../../assets/afip/orden-con-factura.png'
+import orderWithCreditNote from '../../../assets/afip/orden-con-nota-de-credito.png'
+import orderInvoice from '../../../assets/afip/orden-factura.png'
+import orderCreditNote from '../../../assets/afip/orden-nota-de-credito.png'
+
+## Detalles de una orden
+
+Desde los detalles de cualquier de orden podrás ver una caja a la derecha con todas las acciones disponibles de AFIP.
+
+<Image src={orderDetails} style="margin:20px auto" alt="AFIP en los detalles de una orden" />
+
+Desde acá podrás realizar distintas acciones según el estado de la orden
+
+## Crear factura
+
+**Disponible cuando:** La factura de la orden no ha sido creada.
+
+**Efecto:** Genera una factura para la orden. Si la opción está habilitada, tambien enviará un mail al cliente con el número de rastreo.
+
+<div style="display: flex;flex-wrap: wrap;justify-content: space-around;align-items: flex-end;">
+<Image src={orderWithoutInvoice} alt="Orden sin factura" />
+</div>
+
+## Ver y descargar factura
+
+**Disponible cuando:** La factura de la orden ha sido creada.
+
+**Efecto:** Visualiza o descarga la factura de la orden.
+
+<Image src={orderInvoice} style="margin:20px auto" alt="Factura" />
+
+## Crear nota de crédito
+
+**Disponible cuando:** La factura de la orden ha sido creada.
+
+**Efecto:** Genera una nota de crédito para "anular" la factura creada anteriormente. Este proceso es irreversible. Si la opción está habilitada, tambien enviará un mail al cliente con el número de rastreo.
+
+<Image src={orderWithInvoice} style="margin:20px auto" alt="Orden con factura" />
+
+## Ver y descargar nota de crédito
+
+**Disponible cuando:** La nota de crédito de la orden ha sido creada.
+
+**Efecto:** Visualiza o descarga la nota de crédito de la orden.
+
+<Image src={orderCreditNote} style="margin:20px auto" alt="Nota de crédito" />
+
+## Reenviar mail con factura
+
+**Disponible cuando:** La factura de la orden ha sido creada.
+
+**Efecto:** Reenvia el mail con la factura de la orden al cliente.
+
+<Image src={orderWithInvoice} style="margin:20px auto" alt="Orden con factura" />
+
+## Reenviar mail con nota de crédito
+
+**Disponible cuando:** La nota de crédito de la orden ha sido creada.
+
+**Efecto:** Reenvia el mail con la nota de crédito de la orden al cliente.
+
+<Image src={orderWithCreditNote} style="margin:20px auto" alt="Orden con factura" />

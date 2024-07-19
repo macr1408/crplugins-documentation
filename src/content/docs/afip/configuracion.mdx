@@ -1,0 +1,206 @@
+---
+title: Configuración
+---
+
+import { Image } from 'astro:assets';
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import environments from '../../../assets/afip/entornos.png'
+
+## Instalación
+
+- Accedé al Panel de Administración
+- En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
+- En la barra de búsqueda en la parte superior derecha, escribí **AFIP para WooCommerce**
+- Instalá nuestro plugin
+- Activá el plugin
+
+## Ajustes del plugin
+
+Haciendo click en el item "AFIP" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+
+### Conceptos
+
+#### Entornos
+
+Ofrecemos 2 tipos de funcionamiento para el plugin, los cuales denominamos como entornos y se pueden elegir en cualquier momento desde los ajustes del plugin.
+
+<Image src={environments} style="margin:20px auto" alt="Entornos" />
+
+- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de AFIP ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real.
+- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de AFIP.
+
+El uso del entorno **Pruebas** aunque es recomendable, es opcional. Por lo que podes instalar el plugin y utilizar el entorno de **Producción**.
+
+:::caution
+El entorno de pruebas puede ser mas lento en funcionar, asi que es posible que se vean ciertos errores al generar facturas, pero es normal.
+:::
+
+#### Certificado
+
+El certificado es un archivo criptográfico otorgado por AFIP. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
+
+El proceso de creación del certificado está explicado en el siguiente paso.
+
+:::caution
+Cada certificado está vinculado a un entorno en específico. Por lo que no es posible usar el certificado de **Pruebas** en **Producción** y viceversa.
+:::
+
+### Otros ajustes
+
+#### Mail
+
+Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
+
+- Mail con la factura generada
+- Mail con la nota de crédito generada
+
+Adicionalmente estos mails pueden tener _etiquetas_ en el asunto y en el cuerpo del mismo.
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | Juan |
+| <Badge text="{{nombre_completo}}" variant="note" /> | Mostrará el nombre y apellido del cliente | Juan Perez |
+| <Badge text="{{sitio}}" variant="note" /> | Mostrará el nombre de la tienda | CRPlugins |
+| <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
+
+Por ejemplo, si se usa el asunto de mail `Tu factura de {{sitio}} - Orden #{{orden}}`, en el cliente de correo se verá el asunto `Tu factura de MiTienda - Orden #123`
+
+#### Facturar un solo producto
+
+Está la posibilidad de facturar un solo producto para cada orden en lugar de facturar cada producto por separado. El nombre de este producto es configurable y se pueden incluir _etiquetas_ para incluir contenido dinámico
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{primer_producto}}" variant="note" /> | Mostrará el nombre del primer producto en la orden | Taza de colores |
+| <Badge text="{{productos}}" variant="note" /> | Mostrará un aglomerado de todos los productos de la orden, en formato `#x #.` | 1x Taza de colores. 3x Platos |
+
+Por ejemplo, si se usa el nombre `Comisión por {{productos}}`, se facturará un solo producto con el nombre `Comisión por 1x Taza de colores. 3x Platos`
+
+
+## Configuración con AFIP - Producción
+
+En esta sección detallaremos los pasos necesarios para generar un certificado de producción:
+
+<Steps>
+
+1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
+
+2. Ingresar al sitio web de AFIP
+
+3. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
+
+4. Clickear en **Adherir Servicio**
+
+5. Clickear en el logo de AFIP a la izquierda, luego en **Servicios Interactivos** y por último en **Administración de Certificados Digitales** 
+
+6. Confirmamos los datos
+
+7. Volvemos a la pantalla de inicio del sitio de AFIP
+
+8. Buscamos e ingresamos al servicio **Administración de puntos de venta y domicilios**
+
+9. Seleccionamos a nuestro representado
+
+10. Clickeamos **A/B/M de puntos de venta**
+
+11. Clickeamos en **Agregar** y llenamos los datos del punto de venta.
+
+12. En el campo **Sistema** seleccioná `Factura electrónica - Monotributo - Web services` si sos monotributista. De lo contrario seleccioná `RECE para aplicativo y web services`
+
+13. Clickeamos en **aceptar** para finalizar la creación del punto de venta
+
+14. Volvemos a la pantalla de inicio del sitio de AFIP
+
+15. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
+
+16. Clickear en **Agregar alias**
+
+17. En el campo **Alias** colocamos `CRPlugins`
+
+18. Subimos el archivo CSR generado en el primer paso
+
+19. Confirmamos clickeando en **Agregar alias**
+
+20. En el listado de **Certificados** hacemos click en el botón **Ver**
+
+21. Descargar el certificado de producción haciendo click en el botón correspondiente
+
+22. Volvemos a la pantalla de inicio del sitio de AFIP
+
+23. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
+
+24. Clickear en **Nueva Relación** y luego en **Buscar**
+
+25. Clickear en el logo de AFIP a la izquierda, luego en **WebServices** y por último en **Facturación Electrónica**
+
+26. En el campo **Representante**, hacemos click en **Buscar**
+
+27. En **Computador Fiscal** seleccionamos `CRPlugins`
+
+28. Clickear en **Confirmar**
+
+29. Si todos los datos están correctos hacemos click en **Confirmar** nuevamente.
+
+30. Seremos redirigidos a una pantalla en blanco que confirma que la operación fue realizada correctamente
+
+31. Ahora podemos volver a los ajustes del plugin y subir el certificado generado en el paso 21.
+
+</Steps>
+
+
+## Configuración con AFIP - Pruebas
+
+En esta sección detallaremos los pasos necesarios para generar un certificado de pruebas:
+
+<Steps>
+
+1. Generar un CSR desde los ajustes del plugin y guardar el texto generado
+
+2. Ingresar al sitio web de AFIP
+
+3. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
+
+4. Clickear en **Adherir Servicio**
+
+5. Clickear en el logo de AFIP a la izquierda, luego en **Servicios Interactivos** y por último en **WSASS - Autogestión Certificados Homologación** 
+
+6. Confirmamos los datos
+
+7. Volvemos a la pantalla de inicio del sitio de AFIP
+
+8. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
+
+9. Hacemos click en **Nuevo Certificado**
+
+10. En **Nombre simbólico del DN** colocamos `CRPlugins`
+
+11. En **Solicitud de certificado en formato PKCS#10** Introducimos el texto del CSR generado en el primer paso
+
+12. Hacemos click en **Crear DN y obtener certificado**
+
+13. Copiar y guardar el texto generado en un archivo en el ordenador. Puede tener cualquier nombre y formato, por ejemplo `certificado.txt`
+
+14. Clickear en **Crear autorización a servicio**
+
+15. En el primer campo **Nombre simbólico DN a autorizar** seleccionamos `CRPlugins`
+
+16. Seleccionamos nuestro CUIT en los siguientes campos
+
+17. En **Servicio al que desea acceder** seleccionamos `wsfe - Facturación electrónica`
+
+18. Hacemos click en **Crear autorización de acceso** y recibiremos un mensaje diciendo que la operación está completada con éxito
+
+19. Ahora podemos volver a los ajustes del plugin y subir el certificado generado en el paso 13. En este caso, sería el archivo `certificado.txt`
+
+</Steps>
+
+## Video instructivo
+
+Adicionalmente tenemos un video instructivo con todos los pasos necesarios para configurar el plugin:
+
+<iframe width="560" style="height:315px;" height="315" src="https://www.youtube-nocookie.com/embed/P_WaIi7Rsio?si=nLjCkChobdEl62XX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
