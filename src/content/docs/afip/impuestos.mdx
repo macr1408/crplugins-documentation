@@ -1,0 +1,40 @@
+---
+title: Impuestos
+---
+
+import { Image } from 'astro:assets';
+import settingTax from '../../../assets/afip/ajustes-impuesto.png'
+import settingTaxTable from '../../../assets/afip/ajustes-tabla-impuestos.png'
+import woocommerceGeneralTax from '../../../assets/afip/woocommerce-ajustes-generales-impuestos.png'
+import woocommerceDefaultTax from '../../../assets/afip/woocommerce-ajustes-impuesto-estandar.png'
+import woocommerceNoTax from '../../../assets/afip/woocommerce-ajustes-impuesto-exento.png'
+import productTax from '../../../assets/afip/producto-impuestos.png'
+
+El plugin tomará como impuesto base el porcentaje configurado en el campo **IVA por defecto**
+
+<Image src={settingTax} style="margin: 20px auto;" alt="Ajuste impuesto" />
+
+## Productos con distintos tipos de impuestos
+
+Si hay productos con distintos tipos de impuestos en la tienda, habrá que llenar la tabla **Mapeo de clases de impuesto**, asignando una clase de impuesto al porcentaje correspondiente.
+
+Por ejemplo si hay algunos productos con un IVA de 21% y otros con 0% (exentos de IVA), la tabla quedaría así:
+
+<Image src={settingTaxTable} style="margin: 20px auto;" alt="Ajuste impuesto" />
+
+- **Impuesto estándar** pasa a ser el impuesto por defecto. Aplica para todos los productos que no tengan una clase de impuesto
+- **Exento de IVA** es nuestra clase de impuesto creada en WooCommerce, que luego se asigna manualmente a cada producto.
+
+Desde el lado de WooCommerce quedaría así:
+
+
+<Image src={woocommerceGeneralTax} style="margin: 20px auto;" alt="Ajustes de impuestos generales en WooCommerce" />
+<Image src={woocommerceDefaultTax} style="margin: 20px auto;" alt="Ajustes de impuesto estandar en WooCommerce" />
+<Image src={woocommerceNoTax} style="margin: 20px auto;" alt="Ajustes de impuesto sin IVA en WooCommerce" />
+
+Es importante que las clases de impuestos y los ajustes del plugin coincidan.
+
+Por último, en los detalles de un producto se puede seleccionar la clase de impuesto según corresponda:
+
+<Image src={productTax} style="margin: 20px auto;" alt="Ajustes de impuesto sin IVA en WooCommerce" />
+

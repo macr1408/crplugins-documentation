@@ -46,6 +46,7 @@ export default defineConfig({
           items: [
             'afip/introduccion',
             'afip/configuracion',
+            'afip/impuestos',
             'afip/ordenes',
             'afip/listado-ordenes',
             'afip/mails',
