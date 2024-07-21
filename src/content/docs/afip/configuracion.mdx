@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 import environments from '../../../assets/afip/entornos.png'
+import watermark from '../../../assets/afip/factura-marca-agua.png'
 
 ## Instalación
 
@@ -27,8 +28,10 @@ Ofrecemos 2 tipos de funcionamiento para el plugin, los cuales denominamos como 
 
 <Image src={environments} style="margin:20px auto" alt="Entornos" />
 
-- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de AFIP ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real.
-- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de AFIP.
+- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de AFIP ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real. Bajo este entorno las facturas se generarán con una marca de agua al comienzo de la primera página para ser identificadas facilmente.
+<Image src={watermark} style="margin:20px auto" alt="Marca de agua" />
+
+- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de AFIP. 
 
 El uso del entorno **Pruebas** aunque es recomendable, es opcional. Por lo que podes instalar el plugin y utilizar el entorno de **Producción** directamente.
 
