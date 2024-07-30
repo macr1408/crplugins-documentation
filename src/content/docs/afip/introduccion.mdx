@@ -2,9 +2,12 @@
 title: Introducción
 ---
 
+import { Image } from 'astro:assets';
+import settingPermalinks from '../../../assets/afip/ajustes-enlaces.png'
+
 Con este plugin podrás conectar tu tienda con los servicios de AFIP.
 
-Podrás generar facturas y notas de crédito sobre cualquier orden
+Podrás generar facturas y notas de crédito sobre cualquier orden.
 
 :::caution
 Las facturas no son guardadas en nuestros servidores. Queda del lado del subscriptor guardar y almacenar las facturas a criterio propio.
@@ -12,8 +15,11 @@ Las facturas no son guardadas en nuestros servidores. Queda del lado del subscri
 
 ## Requisitos técnicos
 
-- PHP 7.1 o mayor
-- WooCommerce 4 o mayor
+- PHP versión 7.1 o mayor
+- WooCommerce versión 4 o mayor
+- Enlaces de la tienda que **NO** sean de tipo "Simple"
+
+<Image src={settingPermalinks} style="margin: 20px auto;" alt="Ajustes enlaces" />
 
 ## Compatibilidad
 
