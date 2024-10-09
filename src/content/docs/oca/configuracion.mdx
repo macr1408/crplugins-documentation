@@ -7,6 +7,7 @@ import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 import shippingZone from '../../../assets/oca/zona-de-envio.png'
 import productDimensions from '../../../assets/oca/dimensiones-producto.png'
+import variableProductDimensions from '../../../assets/oca/dimensiones-producto-variable.png'
 import wordpressPlugin from '../../../assets/oca/plugin-wordpress.png'
 
 Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
@@ -103,7 +104,12 @@ Para cargar dimensiones y peso hay que:
     - La clase de envío no es necesaria.
 
 </Steps>
+:::caution
+En el caso de un producto variable, los pasos anteriores cubren todas las dimensiones y peso de todas las variaciones, sin embargo, es posible configurar estos datos de cada variación por separado. Ver la segunda imagen de referencia.
+:::
+
 <Image src={productDimensions} style="margin:20px auto" alt="Dimensiones de producto" />
+<Image src={variableProductDimensions} style="margin:20px auto" alt="Dimensiones de producto variable" />
 
 ## Video instructivo
 
