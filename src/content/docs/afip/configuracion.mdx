@@ -180,6 +180,34 @@ Para recuperar un certificado de producción ya creado hay que seguir los siguie
 
 </Steps>
 
+### Regeneración de certificado de Producción
+
+En esta sección detallaremos los pasos necesarios para regenerar un certificado de producción una vez que el anterior ya expiró:
+
+<Steps>
+
+1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
+
+2. Vamos a la pantalla de inicio del sitio de AFIP
+
+3. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
+
+4. Clickear en **Agregar alias**
+
+5. En el campo **Alias** colocamos `CRPlugins`
+
+6. Subimos el archivo CSR generado en el primer paso
+
+7. Confirmamos clickeando en **Agregar alias**
+
+8. En el listado de **Certificados** hacemos click en el botón **Ver**
+
+9. Descargar el certificado de producción haciendo click en el botón correspondiente
+
+10. Vamos a los ajustes del plugin y subimos el nuevo certificado generado.
+
+</Steps>
+
 ### Generación de certificado de Pruebas
 
 En esta sección detallaremos los pasos necesarios para generar un certificado de pruebas:
