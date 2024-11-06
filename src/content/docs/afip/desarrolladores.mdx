@@ -20,6 +20,8 @@ AFIP para WooCommerce ofrece distintas acciones y filtros que podes incluir en t
 |wc_afip_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
 |wc_afip_items_before_process|filter|$items, $customer, $order|Permite modificar los productos a utilizar antes de crear una factura|
 |wc_afip_customer_before_process|filter|$customer, $items, $order|Permite modificar los datos del cliente antes de crear una factura|
+|wc_afip_discount_before_process|filter|$discount, $total, $customer, $items, $order|Permite modificar los descuentos de la orden antes de crear una factura|
+|wc_afip_total_before_process|filter|$total, $discount, $customer, $items, $order|Permite modificar el total de la orden antes de crear una factura|
 |wc_afip_response_after_order_process|filter|$response, $order|Permite modificar la respuesta obtenida de AFIP luego de crear una factura|
 |wc_afip_response_after_order_note_create|filter|$response, $order|Permite modificar la respuesta obtenida de AFIP luego de crear una nota de crédito|
 |wc_afip_legacy_checkout_modified|action|$fields|Ocurre luego de agregar un campo al checkout legacy de WooCommerce|
@@ -28,3 +30,4 @@ AFIP para WooCommerce ofrece distintas acciones y filtros que podes incluir en t
 |wc_afip_after_order_process|action|$order|Ocurre luego de crear una factura|
 |wc_afip_before_credit_note_creation|action|$order|Ocurre antes de crear una factura|
 |wc_afip_after_credit_note_creation|action|$order|Ocurre luego de crear una factura|
+|wc_afip_process_order|action|$order|Esta accion genera una factura para una orden en específico|
