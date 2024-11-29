@@ -5,15 +5,15 @@ title: Configuración
 import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
-import environments from '../../../assets/afip/entornos.png'
-import watermark from '../../../assets/afip/factura-marca-agua.png'
-import wordpressPlugin from '../../../assets/afip/plugin-wordpress.png'
+import environments from '../../../assets/arca/entornos.png'
+import watermark from '../../../assets/arca/factura-marca-agua.png'
+import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png'
 
 ## Instalación
 
 - Accedé al Panel de Administración
 - En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
-- En la barra de búsqueda en la parte superior derecha, escribí **AFIP para WooCommerce**
+- En la barra de búsqueda en la parte superior derecha, escribí **ARCA para WooCommerce**
 - Instalá nuestro plugin
 - Activá el plugin
 
@@ -21,7 +21,7 @@ import wordpressPlugin from '../../../assets/afip/plugin-wordpress.png'
 
 ## Ajustes del plugin
 
-Haciendo click en el item "AFIP" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+Haciendo click en el item "ARCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
 
 ### Conceptos
 
@@ -31,16 +31,16 @@ Ofrecemos 2 tipos de funcionamiento para el plugin, los cuales denominamos como 
 
 <Image src={environments} style="margin:20px auto" alt="Entornos" />
 
-- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de AFIP ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real. Bajo este entorno las facturas se generarán con una marca de agua al comienzo de la primera página para ser identificadas facilmente.
+- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de ARCA ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real. Bajo este entorno las facturas se generarán con una marca de agua al comienzo de la primera página para ser identificadas facilmente.
 <Image src={watermark} style="margin:20px auto" alt="Marca de agua" />
 
-- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de AFIP. 
+- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de ARCA. 
 
 El uso del entorno **Pruebas** aunque es recomendable, es opcional. Por lo que podes instalar el plugin y utilizar el entorno de **Producción** directamente.
 
 #### Certificado
 
-El certificado es un archivo criptográfico otorgado por AFIP. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
+El certificado es un archivo criptográfico otorgado por ARCA. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
 
 El proceso de creación del certificado está explicado en el siguiente paso.
 
@@ -102,17 +102,17 @@ En esta sección detallaremos los pasos necesarios para generar un certificado d
 
 1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
 
-2. Ingresar al sitio web de AFIP
+2. Ingresar al sitio web de ARCA
 
 3. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
 
 4. Clickear en **Adherir Servicio**
 
-5. Clickear en el logo de AFIP a la izquierda, luego en **Servicios Interactivos** y por último en **Administración de Certificados Digitales** 
+5. Clickear en el logo de ARCA a la izquierda, luego en **Servicios Interactivos** y por último en **Administración de Certificados Digitales** 
 
 6. Confirmamos los datos
 
-7. Volvemos a la pantalla de inicio del sitio de AFIP
+7. Volvemos a la pantalla de inicio del sitio de ARCA
 
 8. Buscamos e ingresamos al servicio **Administración de puntos de venta y domicilios**
 
@@ -126,7 +126,7 @@ En esta sección detallaremos los pasos necesarios para generar un certificado d
 
 13. Clickeamos en **aceptar** para finalizar la creación del punto de venta
 
-14. Volvemos a la pantalla de inicio del sitio de AFIP
+14. Volvemos a la pantalla de inicio del sitio de ARCA
 
 15. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
 
@@ -142,13 +142,13 @@ En esta sección detallaremos los pasos necesarios para generar un certificado d
 
 21. Descargar el certificado de producción haciendo click en el botón correspondiente
 
-22. Volvemos a la pantalla de inicio del sitio de AFIP
+22. Volvemos a la pantalla de inicio del sitio de ARCA
 
 23. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
 
 24. Clickear en **Nueva Relación** y luego en **Buscar**
 
-25. Clickear en el logo de AFIP a la izquierda, luego en **WebServices** y por último en **Facturación Electrónica**
+25. Clickear en el logo de ARCA a la izquierda, luego en **WebServices** y por último en **Facturación Electrónica**
 
 26. En el campo **Representante**, hacemos click en **Buscar**
 
@@ -170,7 +170,7 @@ Para recuperar un certificado de producción ya creado hay que seguir los siguie
 
 <Steps>
 
-1. Ingresar al sitio web de AFIP
+1. Ingresar al sitio web de ARCA
 
 2. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
 
@@ -188,7 +188,7 @@ En esta sección detallaremos los pasos necesarios para regenerar un certificado
 
 1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
 
-2. Vamos a la pantalla de inicio del sitio de AFIP
+2. Vamos a la pantalla de inicio del sitio de ARCA
 
 3. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
 
@@ -216,17 +216,17 @@ En esta sección detallaremos los pasos necesarios para generar un certificado d
 
 1. Generar un CSR desde los ajustes del plugin y guardar el texto generado
 
-2. Ingresar al sitio web de AFIP
+2. Ingresar al sitio web de ARCA
 
 3. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
 
 4. Clickear en **Adherir Servicio**
 
-5. Clickear en el logo de AFIP a la izquierda, luego en **Servicios Interactivos** y por último en **WSASS - Autogestión Certificados Homologación** 
+5. Clickear en el logo de ARCA a la izquierda, luego en **Servicios Interactivos** y por último en **WSASS - Autogestión Certificados Homologación** 
 
 6. Confirmamos los datos
 
-7. Volvemos a la pantalla de inicio del sitio de AFIP
+7. Volvemos a la pantalla de inicio del sitio de ARCA
 
 8. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
 
@@ -260,7 +260,7 @@ Para recuperar un certificado de pruebas ya creado hay que seguir los siguientes
 
 <Steps>
 
-1. Ingresar al sitio web de AFIP
+1. Ingresar al sitio web de ARCA
 
 2. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
 
