@@ -2,6 +2,8 @@
 title: Errores Frecuentes
 ---
 
+import checkoutSelector from '../../../assets/oca/checkout-selector.png'
+
 ## No me aparece OCA como medio de envío
 
 Asegurate de que:
@@ -13,6 +15,23 @@ Asegurate de que:
 - La dirección del cliente en el checkout sea válida
 
 Mas información [aquí](/oca/configuracion/)
+
+## Elijo una sucursal en el checkout pero la compra se guarda con otra sucursal distinta
+
+Nuestro plugin agrega un selector de sucursales en el checkout mediante javascript, el cual, una vez seleccionada una sucursal, genera una "recarga" en el checkout (similar a cuando se cambia el medio de pago). El mismo depende de archivos internos de javascript para funcionar correctamente.
+
+<Image src={checkoutSelector} style="margin:20px auto" alt="Selector de sucursales" />
+
+Un error común es que los archivos javascript no cargan del todo en el checkout, bloqueando el funcionamiento correcto del selector de sucursales y evitando que la nueva sucursal se guarde, esto suele suceder cuando:
+
+- Hay un plugin de cache que bloquea ciertos archivos en el checkout. Ejemplo WP Fastest cache.
+- Hay cache desde el lado del hosting o dns, como por ejemplo Cloudflare.
+
+Por lo que hay 3 posibles soluciones a este problema:
+
+- Deshabilitar el selector de sucursales, lo cual hará que el plugin elija automáticamente la sucursal más cercana al código postal del cliente.
+- Deshabilitar la caché totalmente en la web del checkout.
+- Con la ayuda de un desarrollador, ajustar correctamente el o los plugins de caché para permitir que los archivos javascript del plugin puedan ejecutarse sin problemas en el checkout.
 
 ## El plugin no me está generando la etiqueta de envío
 
