@@ -8,6 +8,7 @@ import { Steps } from '@astrojs/starlight/components';
 import environments from '../../../assets/arca/entornos.png'
 import watermark from '../../../assets/arca/factura-marca-agua.png'
 import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png'
+import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
 
 ## Instalación
 
@@ -77,6 +78,11 @@ Las _etiquetas_ disponibles actualmente son:
 | <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
 
 Por ejemplo, si se usa el asunto de mail `Tu factura de {{sitio}} - Orden #{{orden}}`, en el cliente de correo se verá el asunto `Tu factura de MiTienda - Orden #123`
+
+Los mails son enviados utilizando la configuración de WooCommerce, dichos ajustes se pueden ver en la página `WooCommerce > Ajustes > Correos Electrónicos`, campos `Nombre del remitente` y `Dirección de remitente`. 
+
+<Image src={mailSettings} style="margin:20px auto" alt="Plugin en WordPress" />
+
 
 #### Facturar un solo producto
 
