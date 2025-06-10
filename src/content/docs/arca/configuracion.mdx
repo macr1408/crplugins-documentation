@@ -39,55 +39,6 @@ Ofrecemos 2 tipos de funcionamiento para el plugin, los cuales denominamos como 
 
 El uso del entorno **Pruebas** aunque es recomendable, es opcional. Por lo que podes instalar el plugin y utilizar el entorno de **Producción** directamente.
 
-### Otros ajustes
-
-#### Logo
-
-Podes subir un logo personalizado para incluir en la factura. Este logo debe estar en formato **png** o **jpg** y no debe superar los 500kb.
-
-El logo substituye al nombre de fantasía en la factura.
-
-Si tu logo es muy grande, podés reducir el tamaño del archivo usando [esta herramienta online](https://squoosh.app/)
-
-#### Mail
-
-Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
-
-- Mail con la factura generada
-- Mail con la nota de crédito generada
-
-Adicionalmente estos mails pueden tener _etiquetas_ en el asunto y en el cuerpo del mismo.
-
-Las _etiquetas_ disponibles actualmente son:
-
-|  Etiqueta  | Resultado | Ejemplo |
-|------------|-----------|---------|
-| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | Juan |
-| <Badge text="{{nombre_completo}}" variant="note" /> | Mostrará el nombre y apellido del cliente | Juan Perez |
-| <Badge text="{{sitio}}" variant="note" /> | Mostrará el nombre de la tienda | CRPlugins |
-| <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
-
-Por ejemplo, si se usa el asunto de mail `Tu factura de {{sitio}} - Orden #{{orden}}`, en el cliente de correo se verá el asunto `Tu factura de MiTienda - Orden #123`
-
-Los mails son enviados utilizando la configuración de WooCommerce, dichos ajustes se pueden ver en la página `WooCommerce > Ajustes > Correos Electrónicos`, campos `Nombre del remitente` y `Dirección de remitente`. 
-
-<Image src={mailSettings} style="margin:20px auto" alt="Plugin en WordPress" />
-
-
-#### Facturar un solo producto
-
-Está la posibilidad de facturar un solo producto para cada orden en lugar de facturar cada producto por separado. El nombre de este producto es configurable y se pueden incluir _etiquetas_ para incluir contenido dinámico
-
-Las _etiquetas_ disponibles actualmente son:
-
-|  Etiqueta  | Resultado | Ejemplo |
-|------------|-----------|---------|
-| <Badge text="{{primer_producto}}" variant="note" /> | Mostrará el nombre del primer producto en la orden | Taza de colores |
-| <Badge text="{{productos}}" variant="note" /> | Mostrará un aglomerado de todos los productos de la orden, en formato `#x #.` | 1x Taza de colores. 3x Platos |
-
-Por ejemplo, si se usa el nombre `Comisión por {{productos}}`, se facturará un solo producto con el nombre `Comisión por 1x Taza de colores. 3x Platos`
-
-
 ## Certificados
 
 El certificado es un archivo criptográfico otorgado por ARCA. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
@@ -249,8 +200,56 @@ Para recuperar un certificado de pruebas ya creado hay que seguir los siguientes
 
 </Steps>
 
+### Otros ajustes
+
+#### Logo
+
+Podes subir un logo personalizado para incluir en la factura. Este logo debe estar en formato **png** o **jpg** y no debe superar los 500kb.
+
+El logo substituye al nombre de fantasía en la factura.
+
+Si tu logo es muy grande, podés reducir el tamaño del archivo usando [esta herramienta online](https://squoosh.app/)
+
+#### Mail
+
+Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
+
+- Mail con la factura generada
+- Mail con la nota de crédito generada
+
+Adicionalmente estos mails pueden tener _etiquetas_ en el asunto y en el cuerpo del mismo.
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{nombre}}" variant="note" /> | Mostrará el nombre del cliente | Juan |
+| <Badge text="{{nombre_completo}}" variant="note" /> | Mostrará el nombre y apellido del cliente | Juan Perez |
+| <Badge text="{{sitio}}" variant="note" /> | Mostrará el nombre de la tienda | CRPlugins |
+| <Badge text="{{orden}}" variant="note" /> | Mostrará el número de la orden sobre la cual se envía el mail | 123 |
+
+Por ejemplo, si se usa el asunto de mail `Tu factura de {{sitio}} - Orden #{{orden}}`, en el cliente de correo se verá el asunto `Tu factura de MiTienda - Orden #123`
+
+Los mails son enviados utilizando la configuración de WooCommerce, dichos ajustes se pueden ver en la página `WooCommerce > Ajustes > Correos Electrónicos`, campos `Nombre del remitente` y `Dirección de remitente`. 
+
+<Image src={mailSettings} style="margin:20px auto" alt="Plugin en WordPress" />
+
+
+#### Facturar un solo producto
+
+Está la posibilidad de facturar un solo producto para cada orden en lugar de facturar cada producto por separado. El nombre de este producto es configurable y se pueden incluir _etiquetas_ para incluir contenido dinámico
+
+Las _etiquetas_ disponibles actualmente son:
+
+|  Etiqueta  | Resultado | Ejemplo |
+|------------|-----------|---------|
+| <Badge text="{{primer_producto}}" variant="note" /> | Mostrará el nombre del primer producto en la orden | Taza de colores |
+| <Badge text="{{productos}}" variant="note" /> | Mostrará un aglomerado de todos los productos de la orden, en formato `#x #.` | 1x Taza de colores. 3x Platos |
+
+Por ejemplo, si se usa el nombre `Comisión por {{productos}}`, se facturará un solo producto con el nombre `Comisión por 1x Taza de colores. 3x Platos`
+
 ### Video instructivo
 
 Adicionalmente tenemos un video instructivo con todos los pasos necesarios para configurar el plugin:
 
-<iframe width="560" style="height:315px;" height="315" src="https://www.youtube-nocookie.com/embed/P_WaIi7Rsio?si=nLjCkChobdEl62XX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" style="height:315px;margin:20px auto" src="https://www.youtube.com/embed/9OJeWavVAXM?si=395hnvVTuBeJvh9y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
