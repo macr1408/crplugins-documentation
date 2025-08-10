@@ -46,6 +46,8 @@ export default defineConfig({
           items: [
             'arca/introduccion',
             'arca/configuracion',
+            'arca/certificados',
+            'arca/delegacion',
             'arca/impuestos',
             'arca/ordenes',
             'arca/listado-ordenes',

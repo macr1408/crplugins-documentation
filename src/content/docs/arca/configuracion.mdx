@@ -24,185 +24,7 @@ import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
 
 Haciendo click en el item "ARCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
 
-### Conceptos
-
-#### Entornos
-
-Ofrecemos 2 tipos de funcionamiento para el plugin, los cuales denominamos como entornos y se pueden elegir en cualquier momento desde los ajustes del plugin.
-
-<Image src={environments} style="margin:20px auto" alt="Entornos" />
-
-- Entorno **Pruebas**: Sirve para realizar facturas de prueba sin que impacten en el servidor de ARCA ni afecten de ninguna manera la facturación fiscal. Es útil para comprobar que las facturas se generan correctamente en tu tienda y que todo está bien configurado antes de proceder con una factura real. Bajo este entorno las facturas se generarán con una marca de agua al comienzo de la primera página para ser identificadas facilmente.
-<Image src={watermark} style="margin:20px auto" alt="Marca de agua" />
-
-- Entorno **Producción**: Es el entorno final donde el plugin realizará facturas reales que se verán reflejadas en el sistema de ARCA. 
-
-El uso del entorno **Pruebas** aunque es recomendable, es opcional. Por lo que podes instalar el plugin y utilizar el entorno de **Producción** directamente.
-
-## Certificados
-
-El certificado es un archivo criptográfico otorgado por ARCA. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
-
-El proceso de creación del certificado está explicado en el siguiente paso.
-
-:::caution
-Cada certificado está vinculado a un entorno en específico. Por lo que no es posible usar el certificado de **Pruebas** en **Producción** y viceversa.
-:::
-
-
-### Generación de certificado de Producción
-
-En esta sección detallaremos los pasos necesarios para generar un certificado de producción:
-
-<Steps>
-
-1. ##### Adherir servicios
-    <Steps>
-        1. Ingresar al sitio web de ARCA
-        2. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
-        3. Clickear en **Adherir Servicio**
-        4. Clickear en el logo de ARCA a la izquierda, luego en **Servicios Interactivos** y por último en **Administración de Certificados Digitales** 
-        5. Confirmamos los datos
-    </Steps>
-2. ##### Crear punto de venta
-    <Steps>
-        1. Ingresar al sitio web de ARCA
-        2. Buscamos e ingresamos al servicio **Administración de puntos de venta y domicilios**
-        3. Seleccionamos a nuestro representado
-        4. Clickeamos **A/B/M de puntos de venta**
-        5. Clickeamos en **Agregar** y llenamos los datos del punto de venta.
-        6. En el campo **Sistema** seleccioná `Factura electrónica - Monotributo - Web services` si sos monotributista. De lo contrario seleccioná `RECE para aplicativo y web services`
-        7. Clickeamos en **aceptar** para finalizar la creación del punto de venta
-    </Steps>
-3. ##### Crear certificado
-    <Steps>
-        1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
-        2. Ingresar al sitio web de ARCA
-        3. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
-        4. Clickear en **Agregar alias**
-        5. En el campo **Alias** colocamos `CRPlugins`
-        6. Subimos el archivo CSR generado en el primer paso
-        7. Confirmamos clickeando en **Agregar alias**
-        8. En el listado de **Certificados** hacemos click en el botón **Ver**
-        9. Descargar el certificado de producción haciendo click en el botón correspondiente
-        10. Subir el certificado recien descargado en los ajustes del plugin.
-    </Steps>
-4. ##### Autorizar computador
-    <Steps>
-        1. Ingresar al sitio web de ARCA
-        3. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
-        4. Clickear en **Nueva Relación** y luego en **Buscar**
-        5. Clickear en el logo de ARCA a la izquierda, luego en **WebServices** y por último en **Facturación Electrónica**
-        6. En el campo **Representante**, hacemos click en **Buscar**
-        7. En **Computador Fiscal** seleccionamos `CRPlugins`
-        8. Clickear en **Confirmar**
-        9. Si todos los datos están correctos hacemos click en **Confirmar** nuevamente.
-        10. Seremos redirigidos a una pantalla en blanco que confirma que la operación fue realizada correctamente
-    </Steps>
-</Steps>
-
-### Recuperar certificado de Producción
-
-Para recuperar un certificado de producción ya creado hay que seguir los siguientes pasos:
-
-<Steps>
-
-1. Ingresar al sitio web de ARCA
-
-2. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
-
-3. Veremos una lista con los certificados ya creados, hacemos click en **Ver** sobre el cual queremos obtener
-
-4. Hacemos click en el botón de **Descargar**
-
-</Steps>
-
-### Regeneración de certificado de Producción
-
-En esta sección detallaremos los pasos necesarios para regenerar un certificado de producción una vez que el anterior ya expiró:
-
-<Steps>
-
-1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
-
-2. Vamos a la pantalla de inicio del sitio de ARCA
-
-3. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
-
-4. Clickear en **Agregar alias**
-
-5. En el campo **Alias** colocamos `CRPlugins`
-
-6. Subimos el archivo CSR generado en el primer paso
-
-7. Confirmamos clickeando en **Agregar alias**
-
-8. En el listado de **Certificados** hacemos click en el botón **Ver**
-
-9. Descargar el certificado de producción haciendo click en el botón correspondiente
-
-10. Vamos a los ajustes del plugin y subimos el nuevo certificado generado.
-
-</Steps>
-
-### Generación de certificado de Pruebas
-
-En esta sección detallaremos los pasos necesarios para generar un certificado de pruebas:
-
-<Steps>
-1. ##### Adherir servicios
-    <Steps>
-        1. Ingresar al sitio web de ARCA
-        2. Buscamos e ingresamos al servicio **Administrador de Relaciones de Clave Fiscal**
-        3. Clickear en **Adherir Servicio**
-        4. Clickear en el logo de ARCA a la izquierda, luego en **Servicios Interactivos** y por último en **WSASS - Autogestión Certificados Homologación** 
-        5. Confirmamos los datos
-    </Steps>
-2. ##### Crear certificado
-    <Steps>
-        1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
-        2. Ingresar al sitio web de ARCA
-        3. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
-        4. Hacemos click en **Nuevo Certificado**
-        5. En **Nombre simbólico del DN** colocamos `CRPlugins`
-        6. En **Solicitud de certificado en formato PKCS#10** Introducimos el texto del CSR generado en el primer paso
-        7. Hacemos click en **Crear DN y obtener certificado**
-        8. Copiar y guardar el texto generado en un archivo en el ordenador. Este archivo es nuestro certificado. Puede tener cualquier nombre y formato, por ejemplo `certificado.txt`
-        9. Subir el certificado recien guardado en los ajustes del plugin.
-    </Steps>
-4. ##### Autorizar computador
-    <Steps>
-        1. Ingresar al sitio web de ARCA
-        2. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
-        3. Clickear en **Crear autorización a servicio**
-        4. En el primer campo **Nombre simbólico DN a autorizar** seleccionamos `CRPlugins`
-        5. Seleccionamos nuestro CUIT en los siguientes campos
-        6. En **Servicio al que desea acceder** seleccionamos `wsfe - Facturación electrónica`
-        7. Hacemos click en **Crear autorización de acceso** y recibiremos un mensaje diciendo que la operación está completada con éxito
-    </Steps>
-</Steps>
-
-### Recuperar certificado de Pruebas
-
-Para recuperar un certificado de pruebas ya creado hay que seguir los siguientes pasos:
-
-<Steps>
-
-1. Ingresar al sitio web de ARCA
-
-2. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
-
-3. Hacemos click en **certificados**
-
-4. Veremos una lista con los certificados ya creados, hacemos click en **Ver** sobre el cual queremos obtener
-
-5. Copiar y guardar el texto generado en un archivo en el ordenador. Puede tener cualquier nombre y formato, por ejemplo `certificado.txt`
-
-</Steps>
-
-### Otros ajustes
-
-#### Logo
+### Logo
 
 Podes subir un logo personalizado para incluir en la factura. Este logo debe estar en formato **png** o **jpg** y no debe superar los 500kb.
 
@@ -210,7 +32,7 @@ El logo substituye al nombre de fantasía en la factura.
 
 Si tu logo es muy grande, podés reducir el tamaño del archivo usando [esta herramienta online](https://squoosh.app/)
 
-#### Mail
+### Mail
 
 Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
 
@@ -235,7 +57,7 @@ Los mails son enviados utilizando la configuración de WooCommerce, dichos ajust
 <Image src={mailSettings} style="margin:20px auto" alt="Plugin en WordPress" />
 
 
-#### Facturar un solo producto
+### Facturar un solo producto
 
 Está la posibilidad de facturar un solo producto para cada orden en lugar de facturar cada producto por separado. El nombre de este producto es configurable y se pueden incluir _etiquetas_ para incluir contenido dinámico
 
