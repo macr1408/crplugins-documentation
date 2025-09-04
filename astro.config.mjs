@@ -52,6 +52,7 @@ export default defineConfig({
             'arca/ordenes',
             'arca/listado-ordenes',
             'arca/mails',
+            'arca/exportar-datos',
             'arca/desarrolladores',
             'arca/preguntas-frecuentes',
             'arca/errores-frecuentes',
