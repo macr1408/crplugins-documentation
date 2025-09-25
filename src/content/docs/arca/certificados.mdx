@@ -169,6 +169,24 @@ Para recuperar un certificado de pruebas ya creado hay que seguir los siguientes
 
 </Steps>
 
+### Regeneración de certificado de Pruebas
+
+Para regenerar un certificado de pruebas una vez que el anterior ya expiró hay que:
+
+<Steps>
+
+1. Generar un CSR desde los ajustes del plugin, copiar el texto generado y guardar este texto dentro de un archivo nuevo. Ejemplo "csr.txt"
+2. Ingresar al sitio web de ARCA
+3. Buscamos e ingresamos al servicio **WSASS - Autogestión Certificados Homologación**
+4. Hacemos click en **Agregar certificado a alias**
+5. En **Nombre simbólico del DN** seleccionamos `CRPlugins`
+6. En **Nueva solicitud de certificado en formato PKCS#10** Introducimos el texto del CSR generado en el primer paso
+7. Hacemos click en **Crear certificado adicional para el DN**
+8. Copiar y guardar el texto generado en un archivo en el ordenador. Este archivo es nuestro certificado. Puede tener cualquier nombre y formato, por ejemplo `certificado.txt`
+9. Subir el certificado recien guardado en los ajustes del plugin.
+
+</Steps>
+
 ### Video instructivo
 
 Adicionalmente tenemos un video instructivo con todos los pasos necesarios para configurar el plugin:
