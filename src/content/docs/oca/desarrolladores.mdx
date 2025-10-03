@@ -37,6 +37,22 @@ El selector de sucursales de OCA se creará con el ID `oca-branches-selection-wr
 
 Nuestro plugin está escrito en inglés y traducido al español. Por lo que con cualquier plugin de traducción como por ejemplo [Loco Translate](https://es.wordpress.org/plugins/loco-translate/) vas a poder modificar cualquier cadena de texto mostrada por el plugin.
 
+Adicionalmente ofrecemos un hook para modificar el nombre del medio de envío en el checkout:
+
+```php
+add_filter( 'wc_oca_shipping_label', 'crplugins_custom_shipping_method_label', 10, 6 );
+function crplugins_custom_shipping_method_label( $shipping_label, $shipping_code, $final_price, $customer_price, $delivery_days, $selected_branch ) {
+	$existing_label = 'Envío a Domicilio ({{oca_tiempo_entrega}} {{dias}})';
+	$new_label      = 'Express shipping with OCA ({{oca_tiempo_entrega}} {{dias}})';
+
+	if ( $existing_label === $shipping_label ) {
+		return $new_label;
+	}
+
+	return $shipping_label;
+}
+```
+
 ## Shortcode de Rastreo
 
 El shortcode `[oca_order_tracking with_form=true]` añade un formulario para que el cliente final pueda ingresar un número de envío y rastrear su pedido. Sin embargo si se quiere usar un formulario personalizado, hay que usar el shortcode de la siguiente manera `[oca_order_tracking]`.
