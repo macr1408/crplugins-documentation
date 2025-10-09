@@ -8,6 +8,7 @@ Bienvenido! Aquí encontrarás toda la documentación necesaria para utilizar nu
 
 - [OCA Para WooCommerce](/oca/introduccion)
 - [ARCA Para WooCommerce](/arca/introduccion)
+- [MercadoPago Plus Para WooCommerce](/mercadopago/introduccion)
 - [Tienda CRPlugins](https://crplugins.com.ar)
 
 ## Contacto

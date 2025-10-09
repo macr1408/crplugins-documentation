@@ -1,0 +1,65 @@
+---
+title: Configuración
+---
+
+import { Image } from 'astro:assets';
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import installments from '../../../assets/mercadopago/configuracion-cuotas-mp.png'
+import wordpressPlugin from '../../../assets/mercadopago/plugin-wordpress.png'
+import paymentMethods from '../../../assets/mercadopago/medios-de-pago.png'
+
+Para poder empezar a utilizar el plugin de MercadoPago necesitarás asegurarte de que:
+
+- El plugin esté instalado y activo
+- Los ajustes estén correctos
+- MercadoPago esté habilitado como medio de pago en WooCommerce
+- Si vas a utilizar pagos en cuotas con intereses personalizados, deberás configurar todo como cuotas sin interés dentro de MercadoPago
+- Si vas a utilizar pagos mediante suscripción, deberás asegurarte de que el cliente coloque su email de MercadoPago en el checkout, de lo contrario la suscripción será rechazada.
+
+## Instalación
+
+- Accedé al Panel de Administración
+- En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
+- En la barra de búsqueda en la parte superior derecha, escribí **MercadoPago Plus para WooCommerce**
+- Instalá nuestro plugin
+- Activá el plugin
+
+<Image src={wordpressPlugin} style="margin:20px auto" alt="Plugin en WordPress" />
+
+Luego haciendo click en el item "MercadoPago Plus" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+
+#### Pagos mediante cuotas
+
+Si vas a utilizar pagos mediante cuotas, deberás utilizar las cuotas sin interés de MercadoPago. Para ello deberás:
+
+<Steps>
+1. Ir a MercadoPago
+2. Hacer click en **Tu Negocio** en la barra del costado, y luego click en **Costos y cuotas**
+3. Clickear en la sección **Checkout**
+4. Ofrecer cuotas sin interés
+</Steps>
+
+<Image src={installments} style="margin:20px auto" alt="Cuotas en MercadoPago" />
+
+:::caution
+El costo de cuotas de MercadoPago NO es reemplazado por nuestro plugin. Por ejemplo si MercadoPago te cobra un 10% por X cuotas, y vos en el plugin configurás un interés de 15%. El cliente pagará un 15% extra en el checkout de tu tienda, y MercadoPago te cobrará su 10% posteriormente.
+:::
+
+#### Pagos mediante suscripción
+
+Los pagos mediante suscripción inician una suscripción dentro de la cuenta de MercadoPago. Ellos son los responsables de debitar periodícamente el monto de la suscripción. Asi mismo son responsables de validar o rechazar cada pago.
+
+Cada mes se registrará el pago dentro de WooCommerce, pero no se realizará ninguna acción adicional, es decir, no se generará factura ni se modificará el estado del pedido.
+
+Las suscripciones se pueden gestionar en la cuenta de MercadoPago desde el siguiente link: [Suscripciones](https://www.mercadopago.com.ar/subscriptions)
+
+:::caution
+Deberás asegurarte de que el cliente coloque su email de MercadoPago en el checkout en el campo "email" de facturación, de lo contrario no podrá suscribirse.
+:::
+
+#### Medios de Pago
+
+Recordá que debes activar MercadoPago Plus como medio de pago en WooCommerce.
+
+<Image src={paymentMethods} style="margin:20px auto" alt="Medios de pago en WooCommerce" />

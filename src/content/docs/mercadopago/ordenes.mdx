@@ -1,0 +1,39 @@
+---
+title: Órdenes
+---
+
+import { Image } from 'astro:assets';
+import orderDetails from '../../../assets/mercadopago/detalles-orden.png'
+import orderAuthorized from '../../../assets/mercadopago/suscripcion-autorizada.png'
+import orderCancelled from '../../../assets/mercadopago/suscripcion-cancelada.png'
+import orderRefunded from '../../../assets/mercadopago/orden-reembolsada.png'
+
+## Detalles de una orden
+
+Desde los detalles de cualquier de orden podrás ver una caja a la derecha con los detalles de MercadoPago Plus.
+
+<Image src={orderDetails} style="margin:20px auto" alt="MercadoPago Plus en los detalles de una orden" />
+
+Desde acá podrás realizar distintas acciones según el estado de la orden
+
+## Cancelar suscripción
+
+**Disponible cuando:** La orden es una suscripción y está autorizada.
+
+**Efecto:** Cancela la suscripción.
+
+<div style="display: flex;flex-wrap: wrap;justify-content: space-around;align-items: flex-end;">
+<Image src={orderAuthorized} alt="Suscripción autorizada" />
+<Image src={orderCancelled} alt="Suscripción cancelada" />
+</div>
+
+## Reembolsar pago
+
+**Disponible cuando:** La orden se creó con pagos en cuotas y no ha sido reembolsado.
+
+**Efecto:** Reembolsa el pago y actualiza el estado de la orden.
+
+<div style="display: flex;flex-wrap: wrap;justify-content: space-around;align-items: flex-end;">
+<Image src={orderDetails} alt="Reembolso" />
+<Image src={orderRefunded} alt="Pago reembolsado" />
+</div>

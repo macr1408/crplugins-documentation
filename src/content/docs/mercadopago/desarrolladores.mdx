@@ -1,0 +1,21 @@
+---
+title: Desarrolladores
+---
+
+import { Image } from 'astro:assets';
+import cssBranchSelector from '../../../assets/oca/css-selector-sucursales.png'
+
+Esta sección contiene información util para los desarrolladores que deseen extender la funcionalidad de nuestro plugin.
+
+## Hooks
+
+MercadoPago Plus para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
+
+
+| Hook | Tipo | Argumentos | Descripción |
+|------|------|------------|-------------|
+|wc_mercadopago_plus_payment_webhook_received|action|$body|Ocurre al recibir una notificación de pago|
+|wc_mercadopago_plus_subscription_webhook_received|action|$body|Ocurre al recibir una notificación de suscripción|
+|wc_mercadopago_plus_payment_webhook_processed|action|$body|Ocurre luego de procesar una notificación de pago|
+|wc_mercadopago_plus_subscription_webhook_processed|action|$body|Ocurre luego de procesar una notificación de suscripción|
+|wc_mercadopago_plus_order_subscription_cancelled|action|$order_id|Ocurre luego de cancelar una suscripción|

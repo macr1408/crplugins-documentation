@@ -59,6 +59,15 @@ export default defineConfig({
           ],
         },
         {
+          label: 'MercadoPago para WooCommerce',
+          items: [
+            'mercadopago/introduccion',
+            'mercadopago/configuracion',
+            'mercadopago/ordenes',
+            'mercadopago/desarrolladores',
+          ],
+        },
+        {
           slug: 'contacto',
         },
       ],
