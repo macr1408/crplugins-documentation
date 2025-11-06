@@ -59,11 +59,12 @@ export default defineConfig({
           ],
         },
         {
-          label: 'MercadoPago para WooCommerce',
+          label: 'MercadoPago Plus para WooCommerce',
           items: [
             'mercadopago/introduccion',
             'mercadopago/configuracion',
             'mercadopago/ordenes',
+            'mercadopago/gestion-suscripciones',
             'mercadopago/desarrolladores',
           ],
         },
