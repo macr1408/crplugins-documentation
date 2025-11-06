@@ -50,17 +50,6 @@ function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled)
 }
 ```
 
-Tambien es posible que necesites realizar una acción adicional luego de que una suscripción sea cancelada, por ejemplo para modificar el estado de la orden.
-
-```php
-add_action( 'wc_mercadopago_plus_order_subscription_cancelled', 'crplugins_order_subscription_cancelled', 10, 1 );
-function crplugins_order_subscription_cancelled( $order_id ) {
-    $order = wc_get_order( $order_id );
-    $order->update_status( 'cancelled' );
-    $order->save();
-}
-```
-
 ## Hooks
 
 MercadoPago Plus para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
