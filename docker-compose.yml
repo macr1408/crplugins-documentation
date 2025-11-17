@@ -1,0 +1,13 @@
+services:
+  node:
+    image: node:22-bookworm
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "4321:4321"
+    restart: unless-stopped
+    user: "1000:1000"
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true

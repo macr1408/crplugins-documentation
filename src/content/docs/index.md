@@ -13,4 +13,4 @@ Bienvenido! Aquí encontrarás toda la documentación necesaria para utilizar nu
 
 ## Contacto
 
-Podes contactarnos las 24/7 por enviándonos un correo a [contacto@crplugins.com.ar](mailto:contacto@crplugins.com.ar)
+Podes contactarnos las 24/7 enviándonos un correo a [contacto@crplugins.com.ar](mailto:contacto@crplugins.com.ar)

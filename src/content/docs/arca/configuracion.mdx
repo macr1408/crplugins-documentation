@@ -9,6 +9,7 @@ import environments from '../../../assets/arca/entornos.png'
 import watermark from '../../../assets/arca/factura-marca-agua.png'
 import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png'
 import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
+import documentFieldSettings from '../../../assets/arca/campo-documento.png'
 
 ## Instalación
 
@@ -23,6 +24,18 @@ import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
 ## Ajustes del plugin
 
 Haciendo click en el item "ARCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+
+### Campo número de documento
+
+Este plugin agregar un campo en el checkout para capturar el número de documento del cliente. Este campo no es configurable y siempre será obligatorio. Según como se configure este ajuste pueden ocurrir las siguientes situaciones:
+
+- Si se deja vacío, el plugin de ARCA agregará el campo de documento al formulario de checkout. Se utilizará el valor de este campo como número de documento del cliente en la orden.
+- Si se completa con un valor cualquiera (ejemplo `crplugins`), el plugin de ARCA no agregará ningún campo al formulario de checkout. No se completará automáticamente el campo de documento en la orden.
+- Si se completa con un valor y dicho valor coincide con el atributo HTML `name` de un campo ya existente, ejemplo `billing-numero_cuit` el plugin de ARCA no agregará ningún campo al formulario de checkout y se utilizará el valor del campo externo en el checkout como número de documento del cliente en la orden.
+
+<Image src={documentFieldSettings} style="margin:20px auto" alt="Campo número de documento" />
+
+Si se quiere personalizar este campo como hacerlo opcional, cambiarlo de posición o realizar cualquier otra modificación, se deberá utilizar cualquier otro plugin o snippet de código que modifique los campos en el checkout y agregar un nuevo campo.
 
 ### Logo
 
