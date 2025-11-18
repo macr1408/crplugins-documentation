@@ -32,3 +32,16 @@ ARCA para WooCommerce ofrece distintas acciones y filtros que podes incluir en t
 |wc_afip_before_credit_note_creation|action|$order|Ocurre antes de crear una factura|
 |wc_afip_after_credit_note_creation|action|$order|Ocurre luego de crear una factura|
 |wc_afip_process_order|action|$order|Esta accion genera una factura para una orden en específico|
+
+## Snippets
+
+Los snippets son fragmentos de código que se pueden incluir en tu plugin o tema para agregar funcionalidad adicional a nuestros plugins. Deben ir en el archivo  `functions.php` de tu tema activo y es necesario contar con conocimientos en programación PHP para modificarlos.
+
+### Facturar solo las órdenes con cierto medio de pago
+
+```php
+add_filter( 'wc_afip_should_process_order', 'crplugins_should_process_order', 10, 2 );
+function crplugins_should_process_order( $order, $customer_details ) {
+	return $order->get_payment_method() === 'bacs';
+}
+```

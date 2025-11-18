@@ -4,12 +4,32 @@ title: Desarrolladores
 
 Esta sección contiene información util para los desarrolladores que deseen extender la funcionalidad de nuestro plugin.
 
+## Personalización de textos
+
+Nuestro plugin está escrito en inglés y traducido al español. Por lo que con cualquier plugin de traducción como por ejemplo [Loco Translate](https://es.wordpress.org/plugins/loco-translate/) vas a poder modificar cualquier cadena de texto mostrada por el plugin.
+
+## Hooks
+
+MercadoPago Plus para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
+
+
+| Hook | Tipo | Argumentos | Descripción |
+|------|------|------------|-------------|
+|wc_mercadopago_plus_payment_webhook_received|action|$body|Ocurre al recibir una notificación de pago|
+|wc_mercadopago_plus_subscription_webhook_received|action|$body|Ocurre al recibir una notificación de suscripción|
+|wc_mercadopago_plus_payment_webhook_processed|action|$body|Ocurre luego de procesar una notificación de pago|
+|wc_mercadopago_plus_subscription_webhook_processed|action|$body|Ocurre luego de procesar una notificación de suscripción|
+|wc_mercadopago_plus_order_subscription_cancelled|action|$order_id|Ocurre luego de cancelar una suscripción|
+|wc_mercadopago_plus_subscriptions_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago de suscripciones debe estar activo, false en caso contrario|
+|wc_mercadopago_plus_bricks_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago en cuotas debe estar activo, false en caso contrario|
+
 ## Snippets
 
-Es probable que en tu tienda necesites desactivar el medio de pago de suscripciones según alguna regla específica que tengas, por lo que dejamos un par de snippets de ejemplo para realizarlo mediante código. Este código deberá ir en el archivo  `functions.php` de tu tema activo.
+Los snippets son fragmentos de código que se pueden incluir en tu plugin o tema para agregar funcionalidad adicional a nuestros plugins. Deben ir en el archivo  `functions.php` de tu tema activo y es necesario contar con conocimientos en programación PHP para modificarlos.
+
+### Activar suscripciones solo si todos los productos pertenecen a una categoría específica
 
 ```php
-// Activar suscripciones solo si todos los productos tienen la categoría ID 4
 add_filter('wc_mercadopago_plus_subscriptions_method_is_enabled', 'crplugins_mercadopago_plus_subscriptions_method_is_enabled', 10, 1);
 function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled) {
 	$cart = WC()->cart;
@@ -28,8 +48,11 @@ function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled)
 
 	return true;
 }
+```
 
-// Activar suscripciones solo si no hay productos de las categorías ID 6 y 7
+### Activar suscripciones solo si no hay productos de ciertas categorías
+
+```php
 add_filter('wc_mercadopago_plus_subscriptions_method_is_enabled', 'crplugins_mercadopago_plus_subscriptions_method_is_enabled', 10, 1);
 function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled) {
 	$cart = WC()->cart;
@@ -49,18 +72,3 @@ function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled)
 	return true;
 }
 ```
-
-## Hooks
-
-MercadoPago Plus para WooCommerce ofrece distintas acciones y filtros que podes incluir en tu plugin o tema, están listados a continuación:
-
-
-| Hook | Tipo | Argumentos | Descripción |
-|------|------|------------|-------------|
-|wc_mercadopago_plus_payment_webhook_received|action|$body|Ocurre al recibir una notificación de pago|
-|wc_mercadopago_plus_subscription_webhook_received|action|$body|Ocurre al recibir una notificación de suscripción|
-|wc_mercadopago_plus_payment_webhook_processed|action|$body|Ocurre luego de procesar una notificación de pago|
-|wc_mercadopago_plus_subscription_webhook_processed|action|$body|Ocurre luego de procesar una notificación de suscripción|
-|wc_mercadopago_plus_order_subscription_cancelled|action|$order_id|Ocurre luego de cancelar una suscripción|
-|wc_mercadopago_plus_subscriptions_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago de suscripciones debe estar activo, false en caso contrario|
-|wc_mercadopago_plus_bricks_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago en cuotas debe estar activo, false en caso contrario|
