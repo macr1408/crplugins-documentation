@@ -41,8 +41,8 @@ Los snippets son fragmentos de código que se pueden incluir en tu plugin o tema
 ### Facturar automáticamente solo las órdenes con cierto medio de pago
 
 ```php
-add_filter( 'wc_afip_automatic_processor_should_process_order', 'crplugins_should_process_order', 10, 3 );
-function crplugins_should_process_order( $order, $status_from, $status_to ) {
+add_filter( 'wc_afip_automatic_processor_should_process_order', 'crplugins_automatic_processor_should_process_order', 10, 3 );
+function crplugins_automatic_processor_should_process_order( $order, $status_from, $status_to ) {
 	return $order->get_payment_method() === 'bacs';
 }
 ```
