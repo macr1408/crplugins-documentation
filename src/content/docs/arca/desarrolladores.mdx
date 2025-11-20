@@ -19,6 +19,7 @@ ARCA para WooCommerce ofrece distintas acciones y filtros que podes incluir en t
 |------|------|------------|-------------|
 |wc_afip_locate_template|filter|$template, $template_name, $template_path, $default_path|Permite modificar la ruta a usar al buscar la plantilla de un mail|
 |wc_afip_should_process_order|filter|$order, $customer_details|Permite decidir si la orden debe ser facturada o no|
+|wc_afip_automatic_processor_should_process_order|filter|$order, $status_from, $status_to|Permite decidir si la orden debe ser facturada automáticamente o no|
 |wc_afip_items_before_process|filter|$items, $customer, $order|Permite modificar los productos a utilizar antes de crear una factura|
 |wc_afip_customer_before_process|filter|$customer, $items, $order|Permite modificar los datos del cliente antes de crear una factura|
 |wc_afip_discount_before_process|filter|$discount, $total, $customer, $items, $order|Permite modificar los descuentos de la orden antes de crear una factura|
@@ -36,6 +37,15 @@ ARCA para WooCommerce ofrece distintas acciones y filtros que podes incluir en t
 ## Snippets
 
 Los snippets son fragmentos de código que se pueden incluir en tu plugin o tema para agregar funcionalidad adicional a nuestros plugins. Deben ir en el archivo  `functions.php` de tu tema activo y es necesario contar con conocimientos en programación PHP para modificarlos.
+
+### Facturar automáticamente solo las órdenes con cierto medio de pago
+
+```php
+add_filter( 'wc_afip_automatic_processor_should_process_order', 'crplugins_should_process_order', 10, 3 );
+function crplugins_should_process_order( $order, $status_from, $status_to ) {
+	return $order->get_payment_method() === 'bacs';
+}
+```
 
 ### Facturar solo las órdenes con cierto medio de pago
 
