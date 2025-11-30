@@ -64,7 +64,6 @@ export default defineConfig({
             'mercadopago/introduccion',
             'mercadopago/configuracion',
             'mercadopago/ordenes',
-            'mercadopago/gestion-suscripciones',
             'mercadopago/desarrolladores',
           ],
         },
