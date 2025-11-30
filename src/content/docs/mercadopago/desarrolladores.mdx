@@ -16,59 +16,5 @@ MercadoPago Plus para WooCommerce ofrece distintas acciones y filtros que podes 
 | Hook | Tipo | Argumentos | Descripción |
 |------|------|------------|-------------|
 |wc_mercadopago_plus_payment_webhook_received|action|$body|Ocurre al recibir una notificación de pago|
-|wc_mercadopago_plus_subscription_webhook_received|action|$body|Ocurre al recibir una notificación de suscripción|
 |wc_mercadopago_plus_payment_webhook_processed|action|$body|Ocurre luego de procesar una notificación de pago|
-|wc_mercadopago_plus_subscription_webhook_processed|action|$body|Ocurre luego de procesar una notificación de suscripción|
-|wc_mercadopago_plus_order_subscription_cancelled|action|$order_id|Ocurre luego de cancelar una suscripción|
-|wc_mercadopago_plus_subscriptions_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago de suscripciones debe estar activo, false en caso contrario|
 |wc_mercadopago_plus_bricks_method_is_enabled|filter|$is_enabled|Devuelve true si el medio de pago en cuotas debe estar activo, false en caso contrario|
-
-## Snippets
-
-Los snippets son fragmentos de código que se pueden incluir en tu plugin o tema para agregar funcionalidad adicional a nuestros plugins. Deben ir en el archivo  `functions.php` de tu tema activo y es necesario contar con conocimientos en programación PHP para modificarlos.
-
-### Activar suscripciones solo si todos los productos pertenecen a una categoría específica
-
-```php
-add_filter('wc_mercadopago_plus_subscriptions_method_is_enabled', 'crplugins_mercadopago_plus_subscriptions_method_is_enabled', 10, 1);
-function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled) {
-	$cart = WC()->cart;
-	$cart_items = $cart->get_cart();
-	$allowed_category = 4;
-
-	/**
-	 * @var array{data: WC_Product, quantity: int}[] $cart_items
-	 */
-	foreach ( $cart_items as $cart_item ) {
-		$product = $cart_item['data'];
-		if (!in_array($allowed_category, $product->get_category_ids(), true)) {
-			return false;
-		}
-	}
-
-	return true;
-}
-```
-
-### Activar suscripciones solo si no hay productos de ciertas categorías
-
-```php
-add_filter('wc_mercadopago_plus_subscriptions_method_is_enabled', 'crplugins_mercadopago_plus_subscriptions_method_is_enabled', 10, 1);
-function crplugins_mercadopago_plus_subscriptions_method_is_enabled($is_enabled) {
-	$cart = WC()->cart;
-	$cart_items = $cart->get_cart();
-	$forbidden_categories = [6, 7];
-
-	/**
-	 * @var array{data: WC_Product, quantity: int}[] $cart_items
-	 */
-	foreach ( $cart_items as $cart_item ) {
-		$product = $cart_item['data'];
-		if (!empty(array_intersect($forbidden_categories, $product->get_category_ids()))) {
-			return false;
-		}
-	}
-
-	return true;
-}
-```
