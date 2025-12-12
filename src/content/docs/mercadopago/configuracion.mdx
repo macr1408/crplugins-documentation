@@ -5,6 +5,7 @@ title: Configuración
 import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
+import settingInstallments from '../../../assets/mercadopago/ajustes-tabla.png'
 import installments from '../../../assets/mercadopago/configuracion-cuotas-mp.png'
 import wordpressPlugin from '../../../assets/mercadopago/plugin-wordpress.png'
 import paymentMethods from '../../../assets/mercadopago/medios-de-pago.png'
@@ -30,7 +31,7 @@ Luego haciendo click en el item "MercadoPago Plus" de tu sitio de WordPress pode
 
 #### Pagos mediante cuotas
 
-Si vas a utilizar pagos mediante cuotas, deberás utilizar las cuotas sin interés de MercadoPago. Para ello deberás:
+Antes de ofrecer cuotas, deberás habilitar las cuotas sin interés de MercadoPago. Para ello deberás:
 
 <Steps>
 1. Ir a MercadoPago
@@ -44,6 +45,12 @@ Si vas a utilizar pagos mediante cuotas, deberás utilizar las cuotas sin inter�
 :::caution
 El costo de cuotas de MercadoPago NO es reemplazado por nuestro plugin. Por ejemplo si MercadoPago te cobra un 10% por X cuotas, y vos en el plugin configurás un interés de 15%. El cliente pagará un 15% extra en el checkout de tu tienda, y MercadoPago te cobrará su 10% posteriormente.
 :::
+
+#### Ajustes dentro del plugin
+
+Para ofrecer cuotas se debe completar la tabla **Cuotas disponibles**. Las cuotas configuradas en esta tabla se mostrarán en el checkout de tu tienda.
+
+<Image src={settingInstallments} style="margin:20px auto" alt="Cuotas en ajustes" />
 
 #### Medios de Pago
 
