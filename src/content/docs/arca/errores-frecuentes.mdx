@@ -2,6 +2,15 @@
 title: Errores Frecuentes
 ---
 
+import { Image } from 'astro:assets';
+import cacheSettings from '../../../assets/arca/ajustes-cache.png'
+
+## Cambio los ajustes pero no se guardan
+
+Nuestro plugin utiliza archivos de Javascript para guardar y mostrar los ajustes. Muchas veces los plugins de cache alteran el funcionamiento de estos archivos. Para corregirlo, deberás limpiar la caché de los archivos de Javascript. En la imagen se puede ver un ejemplo de como hacerlo con el plugin LiteSpeed Cache.
+
+<Image src={cacheSettings} style="margin:20px auto" alt="Ajustes de cache" />
+
 ## Me aparece el error "Certificado no emitido por AC de confianza"
 
 Este error puede ocurrir por 2 motivos:

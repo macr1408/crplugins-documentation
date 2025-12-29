@@ -68,6 +68,7 @@ export default defineConfig({
             'mercadopago/ordenes',
             'mercadopago/ejemplos-configuracion',
             'mercadopago/desarrolladores',
+            'mercadopago/errores-frecuentes',
           ],
         },
         {
