@@ -30,6 +30,7 @@ export default defineConfig({
           label: 'OCA para WooCommerce',
           items: [
             'oca/introduccion',
+            'oca/instalacion',
             'oca/configuracion',
             'oca/medio-de-envio',
             'oca/ordenes',
@@ -46,6 +47,7 @@ export default defineConfig({
           label: 'ARCA para WooCommerce',
           items: [
             'arca/introduccion',
+            'arca/instalacion',
             'arca/configuracion',
             'arca/certificados',
             'arca/delegacion',
@@ -64,6 +66,7 @@ export default defineConfig({
           label: 'MercadoPago Plus para WooCommerce',
           items: [
             'mercadopago/introduccion',
+            'mercadopago/instalacion',
             'mercadopago/configuracion',
             'mercadopago/ordenes',
             'mercadopago/ejemplos-configuracion',

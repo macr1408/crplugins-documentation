@@ -7,23 +7,27 @@ import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
 import environments from '../../../assets/arca/entornos.png'
 import watermark from '../../../assets/arca/factura-marca-agua.png'
-import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png'
 import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
 import documentFieldSettings from '../../../assets/arca/campo-documento.png'
-
-## Instalación
-
-- Accedé al Panel de Administración
-- En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
-- En la barra de búsqueda en la parte superior derecha, escribí **ARCA para WooCommerce**
-- Instalá nuestro plugin
-- Activá el plugin
-
-<Image src={wordpressPlugin} style="margin:20px auto" alt="Plugin en WordPress" />
 
 ## Ajustes del plugin
 
 Haciendo click en el item "ARCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
+
+| Campo | Obligatorio | Descripción | Ejemplo |
+|-------|-------------|-------------|---------|
+| Api Key | Sí | Licencia obtenida al suscribirse mediante nuestra web | 123abc123abc123abc123abc |
+| Nombre o razón social | Sí | Nombre o razón social de quien va a facturar | Juan Perez |
+| Punto de venta | Sí | Número de punto de venta creado al momento de generar el certificado | 3 |
+| CUIT | Sí | CUIT quien va a facturar | 11-12345678-9 |
+| Dirección | Sí | Dirección de quien va | Av. Corrientes 1234. Buenos Aires.  |
+| Condición frente al IVA | Sí | Condición frente al IVA de quien va a facturar | Monotributo |
+| Ingresos brutos | Sí | Número de inscripción provincial en ingresos brutos. <a href="https://www.iprofesional.com/impuestos/386718-afip-como-encuentro-mi-numero-de-ingresos-brutos" target="_blank">Mas información sobre como obtenerlo en este artículo</a> | 11234567890123 |
+| Inicio de actividades | Sí | Fecha de inicio de actividades | 2020-11-28 |
+| Leyenda | No | Leyenda que aparecerá en la factura | |
+
+Si no tenes seguridad sobre algun campo, siempre podés corroborar los datos en una factura emitida anteriormente con el facturador web de ARCA, los valores como `Ingresos Brutos` o `Inicio de actividades` figuran en todas las facturas emitidas.
+
 
 ### Campo número de documento
 

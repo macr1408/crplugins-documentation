@@ -8,7 +8,6 @@ import { Steps } from '@astrojs/starlight/components';
 import shippingZone from '../../../assets/oca/zona-de-envio.png'
 import productDimensions from '../../../assets/oca/dimensiones-producto.png'
 import variableProductDimensions from '../../../assets/oca/dimensiones-producto-variable.png'
-import wordpressPlugin from '../../../assets/oca/plugin-wordpress.png'
 
 Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
 
@@ -18,21 +17,48 @@ Para poder empezar a utilizar el plugin de OCA necesitarás asegurarte de que:
 - Los productos en el carrito tengan ancho, largo, alto y peso (requisito de OCA)
 - La dirección del cliente en el checkout sea válida
 
-## Instalación
-
-- Accedé al Panel de Administración
-- En el menú de la izquierda, seleccioná **Plugins** y luego **Añadir nuevo**
-- En la barra de búsqueda en la parte superior derecha, escribí **OCA para WooCommerce**
-- Instalá nuestro plugin
-- Activá el plugin
-
-<Image src={wordpressPlugin} style="margin:20px auto" alt="Plugin en WordPress" />
-
 ## Ajustes del plugin
 
 Haciendo click en el item "OCA" de tu sitio de WordPress podes ajustar todos los parámetros del plugin.
 
-#### Operativas
+| Campo | Obligatorio | Descripción | Ejemplo |
+|-------|-------------|-------------|---------|
+| Api Key | Sí | Licencia obtenida al suscribirse mediante nuestra web | 123abc123abc123abc123abc |
+| Usuario | Sí | Nombre de usuario (email) utilizado para iniciar sesión en la <a href="https://www5.oca.com.ar/ocaepak/" target="_blank">web de OCA</a> | tienda@gmail.com |
+| Contraseña | Sí | Contraseña utilizada para iniciar sesión en la <a href="https://www5.oca.com.ar/ocaepak/" target="_blank">web de OCA</a> | 1234567890 |
+| Número de cuenta | Sí | Número de cuenta otorgado por OCA al darse de alta en su plataforma | 123456/000 |
+| CUIT | Sí | CUIT de la empresa registrada en OCA | 11-12345678-9 |
+| Operativas | Sí | Operativas otorgadas por OCA al darse de alta en su plataforma |  |
+| Operativas - Código de Operativa | Sí | Código de la operativa | 123456 |
+| Operativas - Nombre de Operativa | Sí | Nombre que aparecerá en el checkout al seleccionar la operativa | Envío a Domicilio |
+| Operativas - Tipo de Operativa | Sí | Tipo de la operativa | Puerta a Puerta |
+| Operativas - Precio | No | Este campo sobreescribe el precio de envío cotizado por OCA | 5000 |
+| Email | Sí | Email del remitente | tienda@gmail.com |
+| Nombre completo | Sí | Nombre completo del remitente | Juan Perez |
+| Nombre de empresa | Sí | Nombre de la empresa | Mi Tienda |
+| Calle | Sí | Calle del remitente | Av. Corrientes |
+| Altura de calle | Sí | Altura de la calle del remitente | 1234 |
+| Piso | No | Piso del remitente | 2 |
+| Número de depto. | No | Departamento del remitente | C |
+| Localidad | Sí | Localidad del remitente | Palermo |
+| Provincia | Sí | Provincia del remitente | Buenos Aires |
+| Código Postal | Sí | Código Postal del remitente | 1040 |
+| Notas acerca de la dirección | No | Notas acerca de la dirección del remitente | Timbre roto, golpear puerta. |
+| Franja horaria para la colecta | Sí | Franja horaria en que preferis que la colecta se realice. Válido solo para operativas con colecta (Puerta a Puerta y Puerta a Sucursal). Si no tenes operativa con colecta, este valor será ignorado. | 8 - 17 hrs |
+| Días de despacho | Sí | Días de la semana en que estarás disponible para recibir a la colecta de OCA. Válido solo para operativas con colecta (Puerta a Puerta y Puerta a Sucursal). Si no tenes operativa con colecta, este valor será ignorado. | Lunes, Miércoles, Viernes |
+| Sucursal de despacho | Sí | Sucursal de OCA desde la cual se despacharán los pedidos, siempre deberá despacharse desde esta sucursal, sin excepciones. Válido solo para operativas con despacho desde sucursal (Sucursal a Puerta y Sucursal a Sucursal). Si no tenes operativa con despacho desde sucursal, este valor será ignorado. | |
+
+### Operativas
+
+Las operativas indican el modo en que debe funcionar un envío. Existen 4 tipos de operativas:
+- Puerta a Puerta: Envío con colecta desde el depósito configurado en OCA hasta el domicilio del cliente.
+- Puerta a Sucursal: Envío con colecta desde el depósito configurado en OCA hasta la sucursal de OCA elegida por el cliente.
+- Sucursal a Puerta: Envío desde una sucursal de OCA hasta el domicilio del cliente.
+- Sucursal a Sucursal: Envío desde una sucursal de OCA hasta la sucursal de OCA elegida por el cliente.
+
+Lo normal sería utilizar solo 2 operativas, ya que de este modo se cubren todas las necesidades de envío, es decir, tanto a sucursal como a domicilio:
+- Puerta a Puerta y Puerta a Sucursal.
+- Sucursal a Puerta y Sucursal a Sucursal.
 
 Para el campo **Nombre de Operativas**, tenés la posibilidad de agregar _etiquetas_ las cuales luego serán reemplazadas por su valor correspondiente en el carrito y checkout.
 
@@ -47,7 +73,7 @@ Las _etiquetas_ disponibles actualmente son:
 
 Por ejemplo, si se usa el nombre de operativa `Envío a Domicilio ({{oca_tiempo_entrega}} días)`, en el checkout se verá reflejado `Envío a Domicilio (3 días)`
 
-#### Mail
+### Mail
 
 Este plugin ofrece la posibilidad de enviar mails automatícamente o manualmente. Los mails disponibles son:
 
