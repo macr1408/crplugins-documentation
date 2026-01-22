@@ -63,9 +63,10 @@ add_filter( 'wc_afip_customer_before_process', 'crplugins_always_unidentified_co
 function crplugins_always_unidentified_consumer( $customer, $items, $order ) {
 	$customer->set_first_name( '' );
 	$customer->set_last_name( '' );
-	$customer->get_address()->set_full_address( '' );
 	$customer->set_condition( 'Consumidor Final' );
-	$customer->set_document( new \CRPlugins\Afip\ValueObjects\Document( '96', '' ) );
+	$customer->get_address()->set_full_address( '' );
+	$customer->get_document()->set_type( 96 );
+	$customer->get_document()->set_number( '' );
 
 	return $customer;
 }
