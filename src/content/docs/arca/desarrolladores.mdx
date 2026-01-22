@@ -55,3 +55,18 @@ function crplugins_should_process_order( $should_process, $order, $customer_deta
 	return $order->get_payment_method() === 'bacs';
 }
 ```
+
+### Facturar siempre a consumidor final
+
+```php
+add_filter( 'wc_afip_customer_before_process', 'crplugins_always_unidentified_consumer', 10, 3 );
+function crplugins_always_unidentified_consumer( $customer, $items, $order ) {
+	$customer->set_first_name( '' );
+	$customer->set_last_name( '' );
+	$customer->get_address()->set_full_address( '' );
+	$customer->set_condition( 'Consumidor Final' );
+	$customer->set_document( new \CRPlugins\Afip\ValueObjects\Document( '96', '' ) );
+
+	return $customer;
+}
+```
