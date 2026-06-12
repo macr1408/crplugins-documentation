@@ -4,7 +4,7 @@ title: Preguntas Frecuentes
 
 import { Image } from 'astro:assets';
 import { Steps } from '@astrojs/starlight/components';
-import instanceSettings from '../../../assets/oca/configuracion-instancia-medio-envio.png'
+import instanceSettings from '../../../assets/oca/configuracion-instancia-medio-envio.png';
 
 ## ¿Quienes pueden crear, ver y descargar etiquetas?
 
@@ -16,17 +16,43 @@ Sin embargo, los ajustes del plugin solo pueden ser modificados por quienes teng
 
 Por defecto, el permiso `manage_options` está asignado a los siguientes roles: `Administrador`.
 
-## Suelo despachar varios productos en un solo paquete, ¿como lo configuro en el plugin?
+## Como funciona el sistema de empaquetamiento de bultos?
 
-Activando la opción **Enviar siempre un paquete** se sobreescribirán las dimensiones cargadas de los producto y se usarán las dimensiones del campo **Tamaño del paquete por defecto**. Es importante resaltar que el peso se sigue tomando de los productos. 
+### Número de bultos
 
-Por ejemplo si en los ajustes están cargadas las dimensiones 0.5x0.2x0.2 y en el carrito hay 5 productos de 100 gramos cada uno, se enviará a OCA un bulto 0.5x0.2x0.2 de 500 gramos de peso, tanto para cotizar como para generar la etiqueta.
+Nuestra integración por defecto interpreta que se enviará un bulto por cada producto en la orden. Por ejemplo si la orden contiene 2 pares de zapatillas y 1 remera, se tomará como 3 bultos distintos.
+
+Si por el contrario se necesita enviar un solo bulto para la orden, se puede configurar en la pantalla de la orden, antes de procesar la misma. Adicionalmente desde los ajustes del plugin se puede activar la opción **Enviar siempre un paquete** para que se envíe un solo paquete por defecto para todas las ordenes.
+
+Si la orden ya fue procesada, puede ser cancelada, modificar el número de bultos y volver a procesarse.
+
+### Tamaño de los bultos
+
+Por defecto se tomarán las dimensiones de cada producto como las dimensiones de cada bulto. Por ejemplo si se venden 4 pares de zapatillas de 10x10x10, el plugin tomará por defecto 4 bultos de 10x10x10.
+
+Si en la pantalla de editar pedido se modifica la cantidad de bultos, o bien, se tiene activada la opción **Enviar siempre un paquete** entonces se tomará la medida configurada en **Tamaño del paquete por defecto**. Por ejemplo si se modificara la cantidad de bultos a 3 en los detalles del pedido y la medida de **Tamaño del paquete por defecto** fuese de 20x20x20, resultaria en 3 bultos de 20x20x20 (ignorando completamente las dimensiones de los productos).
+
+### Peso de los bultos
+
+El peso de los bultos se calcula sumando el peso de cada producto. Por ejemplo si la orden se realiza por 2 pares de zapatillas de 1kg cada una, por defecto se enviarán 2 bultos de 1kg cada uno.
+
+Si se llegase a modificar el número de bultos, se consolida todo el peso y se divide entre los bultos finales. Por ejemplo si hay 5 productos de 1kg cada uno, y se decide enviar 2 bultos, resultaría en 2 bultos de 2.5kg cada uno.
+
+### División automática de bultos por peso o tamaños
+
+Nuestro plugin no realiza divisiones automáticas segun peso o tamaño ya que cada caso es único al ser despachado.
+
+Sin embargo si la solución ofrecida por el plugin no es suficiente, siempre se puede modificar el comportamiento utilizando fragmentos de código como lo describimos en nuestra sección de [desarrolladores](/oca/desarrolladores) utilizando el filtro `wc_oca_items_before_process`
 
 ## ¿Como habilito envío gratis a partir de X monto?
 
-Podes hacerlo desde las zonas de envío (WooCommerce -> Ajustes -> Envío). Haciendo click en **editar** sobre OCA.  
+Podes hacerlo desde las zonas de envío (WooCommerce -> Ajustes -> Envío). Haciendo click en **editar** sobre OCA.
 
-<Image src={instanceSettings} style="margin: 20px auto;" alt="Configuración de medio de envío" />
+<Image
+  src={instanceSettings}
+  style="margin: 20px auto;"
+  alt="Configuración de medio de envío"
+/>
 
 ## Necesito despachar mas de un paquete para una orden, ¿como hago?
 
