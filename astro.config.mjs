@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,6 +10,41 @@ export default defineConfig({
       title: 'CRPlugins',
       credits: true,
       tableOfContents: true,
+      plugins: [
+        starlightLlmsTxt({
+          projectName: 'CRPlugins',
+          description:
+            'Documentación de los plugins de CRPlugins para WooCommerce: OCA (envíos), ARCA (facturación electrónica) y MercadoPago Plus (pagos).',
+          // Starlight renders a "Sección titulada «...»" anchor link after every
+          // heading. It carries no information for an agent and accounted for
+          // ~10% of llms-full.txt, so strip it from every generated file.
+          customSelectors: { all: ['.sl-anchor-link'] },
+          // Our `:::note` asides carry prerequisites (e.g. "necesitás una cuenta
+          // OCA activa con operativas válidas"), which is exactly what an agent
+          // needs to answer a support question. Keep them in the compact files.
+          minify: { note: false },
+          // One set per plugin, so an agent can pull only the product it needs
+          // instead of the whole site.
+          customSets: [
+            {
+              label: 'OCA para WooCommerce',
+              description: 'envíos con OCA: instalación, configuración, órdenes y rastreo',
+              paths: ['oca/**'],
+            },
+            {
+              label: 'ARCA para WooCommerce',
+              description:
+                'facturación electrónica con ARCA: certificados, delegación, impuestos y órdenes',
+              paths: ['arca/**'],
+            },
+            {
+              label: 'MercadoPago Plus para WooCommerce',
+              description: 'pagos con MercadoPago: instalación, configuración y órdenes',
+              paths: ['mercadopago/**'],
+            },
+          ],
+        }),
+      ],
       logo: {
         dark: './src/assets/dark-logo.svg',
         light: './src/assets/light-logo.svg',
