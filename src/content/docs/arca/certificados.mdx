@@ -5,10 +5,10 @@ title: Certificados
 import { Image } from 'astro:assets';
 import { Badge } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
-import environments from '../../../assets/arca/entornos.png'
-import watermark from '../../../assets/arca/factura-marca-agua.png'
-import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png'
-import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png'
+import environments from '../../../assets/arca/entornos.png';
+import watermark from '../../../assets/arca/factura-marca-agua.png';
+import wordpressPlugin from '../../../assets/arca/plugin-wordpress.png';
+import mailSettings from '../../../assets/arca/woocommerce-ajustes-mail.png';
 
 El certificado es un archivo criptográfico otorgado por ARCA. Este archivo permite que el plugin pueda realizar facturas bajo el CUIT configurado, por lo que es esencial para el correcto funcionamiento del plugin.
 
@@ -99,19 +99,17 @@ En esta sección detallaremos los pasos necesarios para regenerar un certificado
 
 3. Buscamos e ingresamos al servicio **Administración de Certificados Digitales**
 
-4. Clickear en **Agregar alias**
+4. En el alias `CRPlugins` clickeamos en **Ver**
 
-5. En el campo **Alias** colocamos `CRPlugins`
+5. Clickeamos en **Agregar certificado**
 
 6. Subimos el archivo CSR generado en el primer paso
 
-7. Confirmamos clickeando en **Agregar alias**
+7. Confirmamos clickeando en **Agregar certificado**
 
-8. En el listado de **Certificados** hacemos click en el botón **Ver**
+8. Descargar el certificado de producción haciendo click en el botón correspondiente
 
-9. Descargar el certificado de producción haciendo click en el botón correspondiente
-
-10. Vamos a los ajustes del plugin y subimos el nuevo certificado generado.
+9. Vamos a los ajustes del plugin y subimos el nuevo certificado generado.
 
 </Steps>
 
